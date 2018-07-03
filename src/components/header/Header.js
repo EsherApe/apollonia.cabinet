@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Container, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink} from 'reactstrap';
 import './header.scss';
+import {Link} from 'react-router-dom';
 
 class Header extends Component {
     constructor(props) {
