@@ -1,0 +1,17 @@
+.sign-in {
+  background: no-repeat top right;
+  &__form {
+    margin-bottom: 9rem;
+    margin-top: 2rem;
+  }
+  &__login-btn {
+    margin-top: 3rem;
+    width: 15rem;
+    height: 15rem;
+  }
+  &__text {
+    font-size: 2rem;
+    margin-top: 3rem;
+    font-weight: 600;
+  }
+}

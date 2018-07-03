@@ -1,16 +1,20 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Row, Col} from 'reactstrap';
+import {Container, Row} from 'reactstrap';
 import Balance from "./Balance";
 import TransactionsTable from "./TransactionsTable";
 
 class Transactions extends Component {
     render() {
         return (
-            <Row>
-                <Balance/>
-                <TransactionsTable/>
-            </Row>
+            <div className='transactions'>
+                <Container>
+                    <Row>
+                        <Balance/>
+                        <TransactionsTable/>
+                    </Row>
+                </Container>
+            </div>
         );
     }
 }

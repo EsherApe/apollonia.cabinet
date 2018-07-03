@@ -4,19 +4,25 @@ import {Form, Row, Col} from 'reactstrap';
 import CurrencyList from "./CurrencyList";
 import WalletAddress from "./WalletAddress";
 import Amount from "./Amount";
-import Confirm from "./Confirm";
+import ConfirmPurchase from "./ConfirmPurchase";
 
 class PurchaseForm extends Component {
     render() {
         return (
-            <Row>
+            <div className='purchase__form w-100'>
                 <Form>
-                    <CurrencyList/>
-                    <WalletAddress/>
-                    <Amount/>
-                    <Confirm/>
+                    <Row className='purchase__form-row'>
+                        <CurrencyList/>
+                        <WalletAddress/>
+                    </Row>
+                    <Row className='purchase__form-row'>
+                        <Amount/>
+                    </Row>
+                    <Row className='purchase__form-row'>
+                        <ConfirmPurchase/>
+                    </Row>
                 </Form>
-            </Row>
+            </div>
         );
     }
 }

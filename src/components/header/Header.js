@@ -1,13 +1,6 @@
 import React, {Component} from 'react';
-import '../header.scss';
-import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink} from 'reactstrap';
+import {Container, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink} from 'reactstrap';
+import './header.scss';
 
 class Header extends Component {
     constructor(props) {
@@ -18,6 +11,7 @@ class Header extends Component {
             isOpen: false
         };
     }
+
     toggle() {
         this.setState({
             isOpen: !this.state.isOpen
@@ -26,20 +20,24 @@ class Header extends Component {
 
     render() {
         return (
-            <Navbar color="light" light expand="md">
-                <NavbarBrand href="/" className='header-title font-weight-bold'>Apollonia</NavbarBrand>
-                <NavbarToggler onClick={this.toggle} />
-                <Collapse isOpen={this.state.isOpen} navbar>
-                    <Nav className="ml-auto" navbar>
-                        <NavItem>
-                            <NavLink href="./" className='text-uppercase font-weight-bold'>Sign in</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="./" className='text-uppercase font-weight-bold'>Register</NavLink>
-                        </NavItem>
-                    </Nav>
-                </Collapse>
-            </Navbar>
+            <header className='header'>
+                <Container>
+                    <Navbar light expand="md" className='header__navbar'>
+                        <NavbarBrand href="/" className='header__logo font-weight-bold'>Apollonia</NavbarBrand>
+                        <NavbarToggler onClick={this.toggle}/>
+                        <Collapse isOpen={this.state.isOpen} navbar>
+                            <Nav className="ml-auto" navbar>
+                                <NavItem>
+                                    <NavLink href="./" className='m-auto header__link header__link--active active d-flex align-items-center justify-content-center font-weight-bold'>SIGN IN</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink href="./" className='m-auto header__link d-flex align-items-center justify-content-center font-weight-bold'>REGISTER</NavLink>
+                                </NavItem>
+                            </Nav>
+                        </Collapse>
+                    </Navbar>
+                </Container>
+            </header>
         )
     }
 }

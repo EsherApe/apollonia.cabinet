@@ -1,0 +1,76 @@
+@import "../variables";
+
+.purchase {
+  &__title {
+    margin-bottom: 0;
+  }
+  &__subtitle {
+    font-size: 2rem;
+    margin-bottom: 5rem;
+  }
+  &__form-row {
+    margin-bottom: 5rem;
+  }
+
+}
+
+.currency {
+  &__item {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    margin-right: 4rem;
+    flex-shrink: 0;
+    &:hover {
+      background: $hover-color;
+      .bitcoin {
+        background-position: -0px -0px;
+      }
+      .bitcoin-alt {
+        background-position: -0px -122px;
+      }
+      .eos {
+        background-position: -0px -336px;
+      }
+      .ethereum {
+        background-position: -0px -458px;
+      }
+      .litecoin {
+        background-position: -0px -242px;
+      }
+    }
+  }
+  &__icon {
+    transform: scale(0.8);
+  }
+}
+
+.amount {
+  &__btn {
+    width: 28rem;
+    height: 28rem;
+    background-color: #fff;
+    &--active, &:hover {
+      color: #fff;
+      background: $hover-color;
+    }
+  }
+}
+
+.confirm-purchase {
+  &__btn {
+    width: 14rem;
+    height: 14rem;
+    background-color: #fff;
+    border: 2px solid $primary;
+    flex-shrink: 0;
+    &:hover {
+      color: #fff;
+      background: $hover-color;
+      border: 0;
+    }
+  }
+  &__input-box {
+    padding-left: 5rem;
+  }
+}

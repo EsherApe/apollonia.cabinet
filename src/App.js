@@ -12,14 +12,16 @@ import './App.scss';
 class App extends Component {
     render() {
         return (
-            <Container className='App'>
-                <Header/>
-                <SignIn/>
-                {/*<SignUp/>*/}
-                {/*<Purchase/>*/}
-                {/*<Transactions/>*/}
+            <div className='app'>
+                <main className='main'>
+                    <Header/>
+                    {/*<SignIn/>*/}
+                    {/*<SignUp/>*/}
+                    {/*<Purchase/>*/}
+                    <Transactions/>
+                </main>
                 <Footer/>
-            </Container>
+            </div>
         );
     }
 }

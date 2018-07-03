@@ -1,0 +1,37 @@
+.bitcoin, .bitcoin-alt, .litecoin, .eos, .ethereum {
+  display: inline-block;
+  background: url('./img/currencies/currencies-sprite.png') no-repeat;
+  overflow: hidden;
+  text-indent: -9999px;
+  text-align: left;
+}
+
+.bitcoin {
+  background-position: -0px -61px;
+  width: 45px;
+  height: 61px;
+}
+
+.bitcoin-alt {
+  background-position: -0px -182px;
+  width: 44px;
+  height: 60px;
+}
+
+.litecoin {
+  background-position: -0px -289px;
+  width: 44px;
+  height: 47px;
+}
+
+.eos {
+  background-position: -0px -397px;
+  width: 41px;
+  height: 61px;
+}
+
+.ethereum {
+  background-position: -0px -522px;
+  width: 39px;
+  height: 64px;
+}

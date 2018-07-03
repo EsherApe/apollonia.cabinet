@@ -1,0 +1,17 @@
+@import "../variables";
+
+.header {
+  &__navbar {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  &__link {
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    &--active {
+      color: #fff!important;
+      background: $hover-color;
+    }
+  }
+}

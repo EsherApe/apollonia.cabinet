@@ -1,0 +1,29 @@
+@import "../variables";
+
+.footer {
+  padding-top: 4rem;
+  padding-bottom: 1rem;
+}
+
+.socials {
+  z-index: 9;
+  &__link {
+    display: block;
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    text-decoration: none;
+    &:hover {
+      background: $hover-color;
+      color: #ffffff;
+      text-decoration: none;
+      i {
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+.copyright {
+  font-weight: 100;
+}

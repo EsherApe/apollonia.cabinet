@@ -1,15 +1,19 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import SignInForm from './SignInForm';
 import SignInText from './SignInText';
-import {Row, Col} from 'reactstrap';
+import {Container} from 'reactstrap';
+import './sign-in.scss';
+import signInBg from  '../../img/side_bkg_right.svg';
 
 class SignIn extends Component {
     render() {
         return (
-            <Fragment>
-                <SignInForm/>
-                <SignInText/>
-            </Fragment>
+            <div className='sign-in' style={{backgroundImage: `url(${signInBg})`}}>
+                <Container>
+                    <SignInForm/>
+                    <SignInText/>
+                </Container>
+            </div>
         )
     }
 }

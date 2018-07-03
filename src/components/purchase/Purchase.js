@@ -1,25 +1,28 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Row, Col} from 'reactstrap';
+import {Container, Row, Col} from 'reactstrap';
 import PurchaseForm from "./PurchaseForm";
+import './purchase.scss';
 
 class Purchase extends Component {
     render() {
         return (
-            <Row>
-                <Col xs='12' lg='8' className='purchase'>
-                    <Row>
-                        <h2 className='text-uppercase'>Buy APO coin</h2>
-                        <div>
-                            Average transaction process may take 15 minutes and above. For any support and questions, contact
-                            with us.
-                        </div>
-                    </Row>
-                    <Row>
-                        <PurchaseForm/>
-                    </Row>
-                </Col>
-            </Row>
+            <div className='purchase'>
+                <Container>
+                    <Col xs='12' lg='9'>
+                        <Row>
+                            <h2 className='purchase__title text-uppercase'>Buy APO coin</h2>
+                            <span className='purchase__subtitle text-secondary'>
+                                Average transaction process may take 15 minutes and above. For any support and
+                                questions, contact with us.
+                            </span>
+                        </Row>
+                        <Row>
+                            <PurchaseForm/>
+                        </Row>
+                    </Col>
+                </Container>
+            </div>
         );
     }
 }

@@ -5,10 +5,11 @@ import PropTypes from 'prop-types';
 const Amount = (props) => {
     return (
         <Col xs='12'>
-            <ButtonGroup>
-                <Button>20 000 DOGE</Button>
-                <Button>5000 APO</Button>
-            </ButtonGroup>
+            <h5 className="font-weight-bold">Amount: </h5>
+            <div>
+                <Button className='amount__btn amount__btn--active'>20 000 DOGE</Button>
+                <Button className='amount__btn'>5000 APO</Button>
+            </div>
         </Col>
     );
 };

@@ -1,0 +1,43 @@
+@import "../variables";
+
+.sign-up {
+  background: no-repeat top right;
+  &__form-title {
+    margin-top: 5rem;
+  }
+  &__btn-box {
+    padding-left: 5rem;
+  }
+  &__btn {
+    text-decoration: underline;
+    font-size: 2.4rem;
+  }
+}
+
+.agreement {
+  margin-top: 5rem;
+  &__title {
+    font-weight: 400;
+  }
+  &__text {
+    font-weight: 100;
+    margin-bottom: 3rem;
+  }
+  &__link {
+    text-decoration: underline;
+  }
+  &__btn {
+    width: 16rem;
+    height: 16rem;
+    background: #fff;
+    color: $primary;
+    border: 2px solid $primary;
+    font-weight: bold;
+    flex-shrink: 0;
+    &:hover, &:focus, &:active {
+      background: $hover-color;
+      color: #fff;
+      border: 0;
+    }
+  }
+}

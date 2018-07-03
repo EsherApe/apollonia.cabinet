@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import SocialItem from '../SocialItem';
+import SocialItem from './SocialItem';
+import {Col} from 'reactstrap';
 
 class SocialList extends Component {
     render() {
@@ -16,9 +17,11 @@ class SocialList extends Component {
             )
         });
         return (
-            <ul className="socials__list list-unstyled text-sm-right text-center">
-                {socialList}
-            </ul>
+            <Col xs='12' sm='8'>
+                <ul className="socials__list list-unstyled text-sm-right text-center">
+                    {socialList}
+                </ul>
+            </Col>
         )
     }
 }
