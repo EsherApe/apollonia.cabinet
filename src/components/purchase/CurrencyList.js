@@ -7,7 +7,7 @@ const CurrencyList = (props) => {
         <Col xs='12' md='6'>
             <div className='currency__list'>
                 <h5 className="font-weight-bold">Choose currency:</h5>
-                <ul className='list-unstyled d-flex'>
+                <ul className='list-unstyled d-flex flex-wrap'>
                     <li className='currency__item list-inline-item d-flex align-items-center justify-content-center'>
                         <a href=""><i className='currency__icon bitcoin'> </i></a>
                     </li>

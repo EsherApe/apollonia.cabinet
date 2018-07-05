@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import {Container, Row, Col} from 'reactstrap';
 import PurchaseForm from "./PurchaseForm";
 import './purchase.scss';
+import signInBg from  '../../img/side_bkg_right.svg';
 
 class Purchase extends Component {
     render() {
         return (
-            <div className='purchase'>
+            <div className='purchase' style={{backgroundImage: `url(${signInBg})`}}>
                 <Container>
                     <Col xs='12' lg='9'>
                         <Row>
