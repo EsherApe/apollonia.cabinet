@@ -1,7 +1,7 @@
-import {SIGN_IN, SIGN_OUT} from '../constants';
-import {Record} from 'immutable';
+import {SIGN_IN, LOG_OUT} from '../constants';
+import {Map} from 'immutable';
 
-const defaultState = Record({
+const defaultState = new Map({
     isAuthorized: false
 });
 
@@ -12,7 +12,7 @@ export default (authState = defaultState, action) => {
         case SIGN_IN:
             return authState.set('isAuthorized', true);
 
-        case SIGN_OUT:
+        case LOG_OUT:
             return authState.set('isAuthorized', false);
     }
 

@@ -1,8 +1,16 @@
 import React, {Component} from 'react';
 import {Button, Form, FormGroup, Input, Row, Col} from 'reactstrap';
 import {Link} from 'react-router-dom';
+import {connect} from "react-redux";
+import {signIn} from "../../AC";
 
 class SignInForm extends Component {
+
+    handleLogIn = () => {
+        const {signIn} = this.props;
+        signIn();
+    };
+
     render() {
         return (
             <div className='sign-in__form'>
@@ -24,7 +32,7 @@ class SignInForm extends Component {
                                     </FormGroup>
                                 </Col>
                                 <Col xs='4'>
-                                    <Link to='/purchase' className='btn btn-primary sign-in__login-btn'>LOGIN</Link>
+                                    <button type='button' className='btn btn-primary sign-in__login-btn' onClick={this.handleLogIn}>LOGIN</button>
                                 </Col>
                             </Row>
                         </Form>
@@ -35,4 +43,6 @@ class SignInForm extends Component {
     }
 }
 
-export default SignInForm;
+export default connect((state, ownProps) => ({
+    isAuthorized: state.auth.get('isAuthorized')
+}), {signIn})(SignInForm);

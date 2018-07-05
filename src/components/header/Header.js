@@ -1,9 +1,12 @@
-import React, {Component, Fragment} from 'react';
-import {Container, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem} from 'reactstrap';
-import './header.scss';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import {Container, Collapse, Navbar, NavbarToggler, NavbarBrand} from 'reactstrap';
+import {signIn, logOut} from '../../AC';
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import HeaderNavAuthorized from "./HeaderNavAuthorized";
 import HeaderNavNotAuthorized from "./HeaderNavNotAuthorized";
+import './header.scss';
 
 class Header extends Component {
     constructor(props) {
@@ -11,8 +14,7 @@ class Header extends Component {
 
         this.toggle = this.toggle.bind(this);
         this.state = {
-            isOpen: false,
-            isAuthorized: true
+            isOpen: false
         };
     }
 
@@ -22,9 +24,19 @@ class Header extends Component {
         });
     }
 
+    handleSignIn = () => {
+        const {signIn} = this.props;
+        signIn();
+    };
+
+    handleLogOut = () => {
+        const {logOut} = this.props;
+        logOut();
+    };
+
     render() {
         const headerNav = () => {
-            return this.state.isAuthorized ? <HeaderNavAuthorized/> : <HeaderNavNotAuthorized/>
+            return this.props.isAuthorized ? <HeaderNavAuthorized logOut={this.handleLogOut}/> : <HeaderNavNotAuthorized signIn={this.handleSignIn}/>
         };
         return (
             <header className='header'>
@@ -42,4 +54,11 @@ class Header extends Component {
     }
 }
 
-export default Header;
+Header.propTypes = {
+    signIn: PropTypes.func.isRequired,
+    logOut: PropTypes.func.isRequired
+};
+
+export default connect((state, ownProps) => ({
+    isAuthorized: state.auth.get('isAuthorized')
+}), {signIn, logOut})(Header);

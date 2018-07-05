@@ -8,11 +8,11 @@ const HeaderNavNotAuthorized = (props) => {
         <Fragment>
             <Nav className="ml-auto" navbar>
                 <NavItem>
-                    <NavLink to="/purchase" activeClassName="header__link--active"
-                             className='m-auto header__link'>SIGN IN</NavLink>
+                    <NavLink to="/purchase"
+                             className='m-auto header__link' onClick={props.signIn}>SIGN IN</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink to='/signUp' activeClassName="header__link--active"
+                    <NavLink to='/signUp'
                              className='m-auto header__link'>REGISTER</NavLink>
                 </NavItem>
             </Nav>
@@ -20,7 +20,8 @@ const HeaderNavNotAuthorized = (props) => {
     );
 };
 
-HeaderNavNotAuthorized.propTypes = {};
-HeaderNavNotAuthorized.defaultProps = {};
+HeaderNavNotAuthorized.propTypes = {
+    signIn: PropTypes.func.isRequired
+};
 
 export default HeaderNavNotAuthorized;

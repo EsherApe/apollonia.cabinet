@@ -7,25 +7,25 @@ import userImg from '../../img/user.png';
 const HeaderNavAuthorized = (props) => {
     return (
         <Fragment>
-            <Nav className="m-auto" navbar>
+            <Nav className="ml-auto" navbar>
                 <NavItem>
-                    <NavLink to="/transactions" activeClassName="header__link--active"
+                    <NavLink to="/transactions"
                              className='m-auto header__link'>Transactions</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink to='/purchase' activeClassName="header__link--active"
+                    <NavLink to='/purchase'
                              className='m-auto header__link'>Buy APO coin</NavLink>
                 </NavItem>
             </Nav>
             <Nav className="ml-auto" navbar>
                 <NavItem>
                     <div className='d-flex align-items-center justify-content-center'>
-                        <Link to='/user'>
+                        <a href=''>
                             <img src={userImg} className='header__img' alt=""/>
-                        </Link>
+                        </a>
                         <div className='header__user-greeting'>
                             <div>Hello, Eugen!</div>
-                            <Link to="/" className='font-weight-bold'>LOGOUT</Link>
+                            <Link to="/" className='font-weight-bold' onClick={props.logOut}>LOGOUT</Link>
                         </div>
                     </div>
                 </NavItem>
@@ -34,7 +34,8 @@ const HeaderNavAuthorized = (props) => {
     );
 };
 
-HeaderNavAuthorized.propTypes = {};
-HeaderNavAuthorized.defaultProps = {};
+HeaderNavAuthorized.propTypes = {
+    logOut: PropTypes.func.isRequired
+};
 
 export default HeaderNavAuthorized;

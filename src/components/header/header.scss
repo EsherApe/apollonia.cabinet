@@ -17,6 +17,10 @@
     height: 12rem;
     border-radius: 50%;
     font-weight: bold;
+    &:hover {
+      color: #fff!important;
+      background: $hover-color;
+    }
     &--active {
       color: #fff!important;
       background: $hover-color;

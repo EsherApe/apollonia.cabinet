@@ -21,6 +21,12 @@ ol, ul {
   margin-bottom: 0;
 }
 
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .header {
   &__logo {
     position: relative;
@@ -58,6 +64,10 @@ ol, ul {
 
 .btn-primary {
   background: $hover-color;
+}
+
+.content {
+  margin-top: 3rem;
 }
 
 @media (min-width: 1400px) {

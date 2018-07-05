@@ -23,13 +23,15 @@ class App extends Component {
                     <div className='wrapper'>
                         <main className='main'>
                             <Header/>
-                            <Switch>
-                                <Route path='/' exact component={SignIn}/>
-                                <Route path='/signUp' component={SignUp}/>
-                                <Route path='/purchase' component={Purchase}/>
-                                <Route path='/transactions' component={Transactions}/>
-                                <Route path='*' component={NotFound}/>
-                            </Switch>
+                            <div className="content">
+                                <Switch>
+                                    <Route path='/' exact component={SignIn}/>
+                                    <Route path='/signUp' component={SignUp}/>
+                                    <Route path='/purchase' component={Purchase}/>
+                                    <Route path='/transactions' component={Transactions}/>
+                                    <Route path='*' component={NotFound}/>
+                                </Switch>
+                            </div>
                         </main>
                         <Footer/>
                     </div>
