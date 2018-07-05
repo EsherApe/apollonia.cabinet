@@ -1,7 +1,9 @@
-import React, {Component} from 'react';
-import {Container, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink} from 'reactstrap';
+import React, {Component, Fragment} from 'react';
+import {Container, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem} from 'reactstrap';
 import './header.scss';
 import {Link} from 'react-router-dom';
+import HeaderNavAuthorized from "./HeaderNavAuthorized";
+import HeaderNavNotAuthorized from "./HeaderNavNotAuthorized";
 
 class Header extends Component {
     constructor(props) {
@@ -9,7 +11,8 @@ class Header extends Component {
 
         this.toggle = this.toggle.bind(this);
         this.state = {
-            isOpen: false
+            isOpen: false,
+            isAuthorized: true
         };
     }
 
@@ -20,21 +23,17 @@ class Header extends Component {
     }
 
     render() {
+        const headerNav = () => {
+            return this.state.isAuthorized ? <HeaderNavAuthorized/> : <HeaderNavNotAuthorized/>
+        };
         return (
             <header className='header'>
                 <Container>
                     <Navbar light expand="md" className='header__navbar'>
-                        <NavbarBrand href="/" className='header__logo font-weight-bold'>Apollonia</NavbarBrand>
+                        <NavbarBrand tag={Link} to="/" className='header__logo font-weight-bold'>Apollonia</NavbarBrand>
                         <NavbarToggler onClick={this.toggle}/>
                         <Collapse isOpen={this.state.isOpen} navbar>
-                            <Nav className="ml-auto" navbar>
-                                <NavItem>
-                                    <NavLink href="./" className='m-auto header__link header__link--active active d-flex align-items-center justify-content-center font-weight-bold'>SIGN IN</NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink href="./" className='m-auto header__link d-flex align-items-center justify-content-center font-weight-bold'>REGISTER</NavLink>
-                                </NavItem>
-                            </Nav>
+                            {headerNav()}
                         </Collapse>
                     </Navbar>
                 </Container>

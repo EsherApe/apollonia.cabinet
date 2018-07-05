@@ -6,7 +6,7 @@ class TransactionsTable extends Component {
     render() {
         return (
             <Col xs='12' lg='8'>
-                <h1 className='transactions-table__title mb-0'>Transactions</h1>
+                <h2 className='transactions-table__title mb-0'>Transactions</h2>
                 <p className='transactions-table__subtitle text-secondary'>Average transaction process may take 15 minutes and above.</p>
                 <div className='transactions-table__table-box'>
                     <Table className='transactions-table__table text-center font-weight-bold' borderless>

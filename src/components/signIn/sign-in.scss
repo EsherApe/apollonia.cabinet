@@ -5,6 +5,9 @@
     margin-top: 2rem;
   }
   &__login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-top: 3rem;
     width: 15rem;
     height: 15rem;

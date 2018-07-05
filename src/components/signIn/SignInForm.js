@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Form, FormGroup, Input, Row, Col} from 'reactstrap';
+import {Link} from 'react-router-dom';
 
 class SignInForm extends Component {
     render() {
@@ -23,7 +24,7 @@ class SignInForm extends Component {
                                     </FormGroup>
                                 </Col>
                                 <Col xs='4'>
-                                    <Button color='primary' className='sign-in__login-btn'>LOGIN</Button>
+                                    <Link to='/purchase' className='btn btn-primary sign-in__login-btn'>LOGIN</Link>
                                 </Col>
                             </Row>
                         </Form>
