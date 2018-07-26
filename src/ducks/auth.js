@@ -5,7 +5,6 @@ import { all, take, call, put, cps, takeEvery } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 
 const ReducerRecord = Record({
-  isAuthorized: false,
   user: null,
   error: null,
   loading: false
@@ -48,10 +47,18 @@ export default function reducer(state = new ReducerRecord(), action) {
 }
 
 //action creators
-export function signUp(email, password) {
+export function signUp(
+  email, password,
+  firstName, middleName, lastName, country,
+  skypeId, telegramId
+) {
   return {
     type: SIGN_UP_REQUEST,
-    payload: {email, password}
+    payload: {
+      email, password,
+      firstName, middleName, lastName, country,
+      skypeId, telegramId
+    }
   }
 }
 
@@ -97,7 +104,7 @@ export const signInSaga = function* () {
         type: SIGN_IN_SUCCESS,
         payload: {user}
       });
-      yield put(push('/admin'));
+      yield put(push('/purchase'));
     } catch (error) {
       yield put({
         type: SIGN_IN_ERROR,
@@ -112,7 +119,7 @@ export const signUpSaga = function* () {
 
   while (true) {
     const action = yield take(SIGN_UP_REQUEST);
-
+    console.log(action.payload);
     try {
       const user = yield call(
         [auth, auth.createUserWithEmailAndPassword],

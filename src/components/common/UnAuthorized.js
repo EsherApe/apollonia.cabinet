@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Container } from 'reactstrap';
 
 class UnAuthorized extends Component {
   render() {
     return (
-      <div>
-        <h1>Unathorized, please <Link to='/auth/signIn'>sign in</Link></h1>
-      </div>
+      <Container>
+        <div className='text-center'>
+          <h1>Unauthorized!</h1>
+          <h2>please <Link to='/auth/signIn' style={{textDecoration: 'underline'}}>sign in</Link></h2>
+        </div>
+      </Container>
     );
   }
 }

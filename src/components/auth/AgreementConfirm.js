@@ -1,14 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {Button} from 'reactstrap';
+import React, { Fragment } from 'react';
+import { Field } from 'redux-form';
 
 const AgreementConfirm = (props) => {
-    return (
-        <Button className='agreement__btn'>Confirm <br/> and accept</Button>
-    );
+  return (
+    <Fragment>
+      <label>
+        <Field name={props.name} component='input' type="checkbox" className='confirm-checkbox'/>
+        <div className='agreement__btn btn btn-secondary d-flex justify-content-center align-items-center'>
+          <span>Confirm <br/> and accept</span>
+        </div>
+      </label>
+    </Fragment>
+  );
 };
-
-AgreementConfirm.propTypes = {};
-AgreementConfirm.defaultProps = {};
 
 export default AgreementConfirm;

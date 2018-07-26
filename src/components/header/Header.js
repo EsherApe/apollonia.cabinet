@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Container, Collapse, Navbar, NavbarToggler, NavbarBrand } from 'reactstrap';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {signIn, signOut} from '../../ducks/auth';
+import {moduleName, signIn, signOut} from '../../ducks/auth';
 import HeaderNavAuthorized from "./HeaderNavAuthorized";
 import HeaderNavNotAuthorized from "./HeaderNavNotAuthorized";
 import './header.scss';
@@ -25,18 +25,16 @@ class Header extends Component {
   }
 
   handleSignIn = () => {
-    const {signIn} = this.props;
-    signIn();
+    this.props.signIn();
   };
 
-  handleLogOut = () => {
-    const {signOut} = this.props;
-    signOut();
+  handleSignOut = () => {
+    this.props.signOut();
   };
 
   render() {
     const headerNav = () => {
-      return this.props.isAuthorized ? <HeaderNavAuthorized logOut={this.handleLogOut}/> :
+      return this.props.authorized ? <HeaderNavAuthorized signOut={this.handleSignOut}/> :
         <HeaderNavNotAuthorized signIn={this.handleSignIn}/>
     };
     return (
@@ -55,11 +53,11 @@ class Header extends Component {
   }
 }
 
-// Header.propTypes = {
-//   signIn: PropTypes.func.isRequired,
-//   logOut: PropTypes.func.isRequired
-// };
+Header.propTypes = {
+  signIn: PropTypes.func.isRequired,
+  signOut: PropTypes.func.isRequired
+};
 
-export default connect((state, ownProps) => ({
-  isAuthorized: state.auth.get('isAuthorized')
+export default connect(state => ({
+  authorized: !!state[moduleName].user
 }), {signIn, signOut})(Header);

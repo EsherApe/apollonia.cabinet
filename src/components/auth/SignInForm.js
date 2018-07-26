@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { Container, Form, FormGroup, Row, Col } from 'reactstrap';
 import SignInText from './SignInText';
-import signInBg from  '../../img/side_bkg_right.svg';
+import ErrorField from '../common/ErrorField';
+import signInBg from '../../img/side_bkg_right.svg';
+import { validate as emailValidate } from "email-validator/index";
 
 class SignInForm extends Component {
   render() {
@@ -21,12 +23,12 @@ class SignInForm extends Component {
                   <Row>
                     <Col xs='8' style={{paddingRight: '6rem'}}>
                       <FormGroup>
-                        <Field name="email" component='input' className='font-weight-bold' id="exampleEmail"
-                               placeholder="E-MAIL"/>
+                        <Field name="email" component={ErrorField} className='font-weight-bold form-control'
+                               placeholder='E-MAIL'/>
                       </FormGroup>
                       <FormGroup>
-                        <Field name="password" component="input" className='font-weight-bold'
-                               id="examplePassword" placeholder="PASSWORD"/>
+                        <Field name="password" component={ErrorField} className='font-weight-bold form-control'
+                               placeholder='PASSWORD' type='password'/>
                       </FormGroup>
                     </Col>
                     <Col xs='4'>
@@ -44,6 +46,25 @@ class SignInForm extends Component {
   }
 }
 
+const validate = ({email, password}) => {
+  const errors = {};
+
+  if(!email) {
+    errors.email = 'email is required!';
+  } else if(!emailValidate(email)) {
+    errors.email = 'invalid email!';
+  }
+
+  if(!password) {
+    errors.password = 'password is required!';
+  } else if(password.length < 8) {
+    errors.password = 'password to short!';
+  }
+
+  return errors;
+};
+
 export default reduxForm({
-  form: 'auth'
+  form: 'signIn',
+  validate
 })(SignInForm);

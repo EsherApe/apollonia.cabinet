@@ -6,6 +6,7 @@ import Agreement from "./Agreement";
 import AgreementConfirm from "./AgreementConfirm";
 import ErrorField from '../common/ErrorField';
 import signUpBg from '../../img/side_bkg_right.svg';
+import signUpSubmitBtn from "./signUpSubmitBtn";
 
 class SignUpForm extends Component {
   render() {
@@ -21,7 +22,7 @@ class SignUpForm extends Component {
                 <Row>
                   <Col xs='12' lg='4'>
                     <FormGroup>
-                      <Field name="email" component={ErrorField} placeholder="E-MAIL"/>
+                      <Field name="email" component={ErrorField} className='form-control' placeholder="E-MAIL"/>
                     </FormGroup>
                   </Col>
                 </Row>
@@ -30,12 +31,14 @@ class SignUpForm extends Component {
                     <Row>
                       <Col xs='12' lg='6'>
                         <FormGroup>
-                          <Field name="password" component={ErrorField} placeholder="PASSWORD"/>
+                          <Field name="password" component={ErrorField} className='form-control'
+                                 placeholder="PASSWORD" type='password'/>
                         </FormGroup>
                       </Col>
                       <Col xs='12' lg='6'>
                         <FormGroup>
-                          <Field name="confirmPass" component={ErrorField} placeholder="CONFIRM PASSWORD"/>
+                          <Field name="confirmPassword" component={ErrorField} className='form-control'
+                                 placeholder="CONFIRM PASSWORD" type='password'/>
                         </FormGroup>
                       </Col>
                     </Row>
@@ -47,22 +50,26 @@ class SignUpForm extends Component {
                     <Row>
                       <Col xs='12' lg='4'>
                         <FormGroup>
-                          <Field name="firstName" component={ErrorField} placeholder="FIRST NAME"/>
+                          <Field name="firstName" component={ErrorField} className='form-control'
+                                 placeholder="FIRST NAME"/>
                         </FormGroup>
                       </Col>
                       <Col xs='12' lg='4'>
                         <FormGroup>
-                          <Field name="middleName" component='input' placeholder="MIDDLE NAME"/>
+                          <Field name="middleName" component='input' className='form-control'
+                                 placeholder="MIDDLE NAME"/>
                         </FormGroup>
                       </Col>
                       <Col xs='12' lg='4'>
                         <FormGroup>
-                          <Field name="lastName" component={ErrorField} placeholder="LAST NAME"/>
+                          <Field name="lastName" component={ErrorField} className='form-control'
+                                 placeholder="LAST NAME"/>
                         </FormGroup>
                       </Col>
                       <Col xs='12' lg='4'>
                         <FormGroup>
-                          <Field name="country" component='input' placeholder="COUNTRY OF RESIDENCE"/>
+                          <Field name="country" component='input' className='form-control'
+                                 placeholder="COUNTRY OF RESIDENCE"/>
                         </FormGroup>
                       </Col>
                     </Row>
@@ -74,31 +81,28 @@ class SignUpForm extends Component {
                     <Row>
                       <Col xs='12' lg='4'>
                         <FormGroup>
-                          <Field name="skypeId" component='input' placeholder="SKYPE ID"/>
+                          <Field name="skypeId" component='input' className='form-control' placeholder="SKYPE ID"/>
                         </FormGroup>
                       </Col>
                       <Col xs='12' lg='4'>
                         <FormGroup>
-                          <Field name="telegramId" component='input' placeholder="TELEGRAM ID"/>
+                          <Field name="telegramId" component='input' className='form-control'
+                                 placeholder="TELEGRAM ID"/>
                         </FormGroup>
                       </Col>
                     </Row>
                   </Col>
                 </Row>
                 <Agreement>terms of use</Agreement>
-                <div className='text-center text-md-left'><AgreementConfirm/></div>
+                <div className='text-center text-md-left'><AgreementConfirm name='termsOfUse'/></div>
                 <Agreement>
                   read and accept <a href="https://google.com" className='agreement__link text-secondary'>following
                   agreement</a>
                 </Agreement>
                 <div className='d-flex align-items-center'>
-                  <AgreementConfirm/>
+                  <AgreementConfirm name='followingAgreement'/>
                   <div className='sign-up__btn-box'>
-                    <a href='' className='sign-up__btn font-weight-bold text-uppercase text-primary'>Register my
-                      profile</a>
-                    <div className='text-danger'>Error! You must confirm accept all term of conditions and
-                      agreements before proceed.
-                    </div>
+                    <Field name='signUpSubmitBtn' component={signUpSubmitBtn}/>
                   </div>
                 </div>
               </Form>
@@ -110,8 +114,12 @@ class SignUpForm extends Component {
   }
 }
 
-const validate = ({email, password}) => {
+const validate = ({email, password, confirmPassword, firstName, lastName, termsOfUse, followingAgreement}) => {
   const errors = {};
+
+  if(!email || !password || !confirmPassword || !firstName || !lastName) {
+    errors.signUpSubmitBtn = 'You should fill all required fields!'
+  }
 
   if(!email) {
     errors.email = 'email is required!';
@@ -125,10 +133,28 @@ const validate = ({email, password}) => {
     errors.password = 'password to short!';
   }
 
+  if(!confirmPassword) {
+    errors.confirmPassword = 'confirm password!'
+  } else if(password !== confirmPassword) {
+    errors.confirmPassword = 'passwords are not equal!'
+  }
+
+  if(!firstName) {
+    errors.firstName = 'first name is required!'
+  }
+
+  if(!lastName) {
+    errors.lastName = 'last name is required!'
+  }
+
+  if(!termsOfUse || !followingAgreement) {
+    errors.signUpSubmitBtn = 'Error! You must confirm accept all term of conditions and agreements before proceed.'
+  }
+
   return errors;
 };
 
 export default reduxForm({
-  form: 'auth',
+  form: 'signUp',
   validate
 })(SignUpForm);
