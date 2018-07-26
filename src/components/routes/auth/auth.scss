@@ -1,4 +1,4 @@
-@import "../variables";
+@import "../../variables";
 
 .sign-up {
   background: no-repeat top right;
@@ -20,7 +20,7 @@
     font-weight: 400;
   }
   &__text {
-    font-weight: 100;
+    //font-weight: 100;
     margin-bottom: 3rem;
     font-size: 2rem;
   }
@@ -40,5 +40,26 @@
       color: #fff;
       border: 0;
     }
+  }
+}
+
+.sign-in {
+  background: no-repeat top right;
+  &__form {
+    margin-bottom: 9rem;
+    margin-top: 2rem;
+  }
+  &__login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    width: 15rem;
+    height: 15rem;
+  }
+  &__text {
+    font-size: 2rem;
+    margin-top: 3rem;
+    font-weight: 600;
   }
 }

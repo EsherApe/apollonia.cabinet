@@ -8,11 +8,11 @@ const HeaderNavNotAuthorized = (props) => {
         <Fragment>
             <Nav className="ml-auto" navbar>
                 <NavItem>
-                    <NavLink to="/purchase"
+                    <NavLink to="/auth/signIn"
                              className='m-auto header__link' onClick={props.signIn}>SIGN IN</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink to='/signUp'
+                    <NavLink to='/auth/signUp'
                              className='m-auto header__link'>REGISTER</NavLink>
                 </NavItem>
             </Nav>

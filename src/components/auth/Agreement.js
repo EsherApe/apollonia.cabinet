@@ -5,7 +5,7 @@ const Agreement = (props) => {
     return (
         <div className='agreement'>
             <h4 className='agreement__title text-uppercase text-secondary'>
-                {props.title} {props.link && <a href={props.link} className='agreement__link text-secondary'>{props.linkText}</a>}
+                {props.children}
             </h4>
             <p className='agreement__text'>The following Terms and Conditions ("Terms") govern your (“you” or the
                 “Purchaser”) purchase of
@@ -19,6 +19,5 @@ const Agreement = (props) => {
 };
 
 Agreement.propTypes = {};
-Agreement.defaultProps = {};
 
 export default Agreement;

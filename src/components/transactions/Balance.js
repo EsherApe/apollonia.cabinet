@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Col} from 'reactstrap';
-import './transactions.scss';
+import '../routes/transactions/transactions.scss';
 
 class Balance extends Component {
     render() {
