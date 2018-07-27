@@ -1,7 +1,6 @@
-import firebase from 'firebase/app';
 import { appName } from "../config";
 import { Record } from 'immutable';
-import { all, take, call, put, cps, takeEvery } from 'redux-saga/effects';
+import { all, take, call, put, takeEvery } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 import { postData } from './utils';
 
@@ -76,26 +75,12 @@ export function signOut() {
 }
 
 //Saga
-export const stateChangeSaga = function* () {
-  const auth = firebase.auth();
-
-  try {
-    yield cps([auth, auth.onAuthStateChanged]);
-  } catch (user) {
-    yield put({
-      type: SIGN_IN_SUCCESS,
-      payload: {user}
-    })
-  }
-};
-
 export const signInSaga = function* () {
   while (true) {
     const action = yield take(SIGN_IN_REQUEST);
 
     try {
       const user = yield call(postData, `/services/auth/login`, action.payload);
-      console.log(user);
       yield put({
         type: SIGN_IN_SUCCESS,
         payload: {user}
@@ -130,10 +115,7 @@ export const signUpSaga = function* () {
 };
 
 export const signOutSaga = function* () {
-  const auth = firebase.auth();
-
   try {
-    yield call([auth, auth.signOut]);
     yield put({
       type: SIGN_OUT_SUCCESS
     });
@@ -147,7 +129,6 @@ export const saga = function* () {
   yield all([
     signUpSaga(),
     signInSaga(),
-    stateChangeSaga(),
     takeEvery(SIGN_OUT_REQUEST, signOutSaga)
   ])
 };

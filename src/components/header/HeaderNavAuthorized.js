@@ -8,7 +8,6 @@ import {moduleName} from '../../ducks/auth';
 
 class HeaderNavAuthorized extends Component {
   render() {
-    console.log(this.props);
     return (
       <Fragment>
         <Nav className="ml-auto" navbar>

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Table, Col } from 'reactstrap';
+import {connect} from 'react-redux';
+import {moduleName} from '../../ducks/user';
 
 class TransactionsTable extends Component {
   render() {
@@ -53,4 +55,6 @@ class TransactionsTable extends Component {
   }
 }
 
-export default TransactionsTable;
+export default connect(state => ({
+  transactionHistory: state[moduleName]
+}))(TransactionsTable);
