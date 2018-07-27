@@ -3,6 +3,7 @@ import { appName } from "../config";
 import { Record } from 'immutable';
 import { all, take, call, put, cps, takeEvery } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
+import { postData } from './utils';
 
 const ReducerRecord = Record({
   user: null,
@@ -27,6 +28,7 @@ export default function reducer(state = new ReducerRecord(), action) {
 
   switch (type) {
     case SIGN_UP_REQUEST:
+    case SIGN_IN_REQUEST:
       return state.set('loading', true);
     case SIGN_IN_SUCCESS:
     case SIGN_UP_SUCCESS:
@@ -47,25 +49,23 @@ export default function reducer(state = new ReducerRecord(), action) {
 }
 
 //action creators
-export function signUp(
-  email, password,
-  firstName, middleName, lastName, country,
-  skypeId, telegramId
-) {
+export function signUp(email, password,
+                       firstName, middleName, lastName, countryCode,
+                       skypeId, telegramId) {
   return {
     type: SIGN_UP_REQUEST,
     payload: {
       email, password,
-      firstName, middleName, lastName, country,
+      firstName, middleName, lastName, countryCode,
       skypeId, telegramId
     }
   }
 }
 
-export function signIn(email, password) {
+export function signIn(login, password) {
   return {
     type: SIGN_IN_REQUEST,
-    payload: {email, password}
+    payload: {login, password}
   }
 }
 
@@ -90,16 +90,12 @@ export const stateChangeSaga = function* () {
 };
 
 export const signInSaga = function* () {
-  const auth = firebase.auth();
-
   while (true) {
     const action = yield take(SIGN_IN_REQUEST);
 
     try {
-      const user = yield call(
-        [auth, auth.signInWithEmailAndPassword],
-        action.payload.email, action.payload.password
-      );
+      const user = yield call(postData, `/services/auth/login`, action.payload);
+      console.log(user);
       yield put({
         type: SIGN_IN_SUCCESS,
         payload: {user}
@@ -109,26 +105,21 @@ export const signInSaga = function* () {
       yield put({
         type: SIGN_IN_ERROR,
         error
-      })
+      });
     }
   }
 };
 
 export const signUpSaga = function* () {
-  const auth = firebase.auth();
-
   while (true) {
     const action = yield take(SIGN_UP_REQUEST);
-    console.log(action.payload);
     try {
-      const user = yield call(
-        [auth, auth.createUserWithEmailAndPassword],
-        action.payload.email, action.payload.password
-      );
+      const user = yield call(postData, `/services/auth/register`, action.payload);
       yield put({
         type: SIGN_UP_SUCCESS,
         payload: {user}
-      })
+      });
+      yield put(push('/purchase'));
     } catch (error) {
       yield put({
         type: SIGN_UP_ERROR,

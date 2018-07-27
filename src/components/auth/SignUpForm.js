@@ -68,7 +68,7 @@ class SignUpForm extends Component {
                       </Col>
                       <Col xs='12' lg='4'>
                         <FormGroup>
-                          <Field name="country" component='input' className='form-control'
+                          <Field name="countryCode" component='input' className='form-control'
                                  placeholder="COUNTRY OF RESIDENCE"/>
                         </FormGroup>
                       </Col>

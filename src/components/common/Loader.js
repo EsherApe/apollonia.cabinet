@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {Fragment} from 'react';
+import loaderImg from '../../img/bkg.svg';
 
 function Loader(props) {
   return (
-    <h2>Loading...</h2>
+    <Fragment>
+      <div className='loader-container'>
+        <img src={loaderImg} alt="loader"/>
+      </div>
+    </Fragment>
   );
 }
 
