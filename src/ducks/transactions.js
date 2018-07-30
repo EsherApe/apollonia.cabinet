@@ -3,7 +3,7 @@ import { appName } from '../config';
 import { Record } from 'immutable';
 
 //Constants
-export const moduleName = 'user';
+export const moduleName = 'transactions';
 const prefix = `${appName}/${moduleName}`;
 
 export const TRANSACTION_HISTORY_REQUEST = `${prefix}/TRANSACTION_HISTORY_REQUEST`;
@@ -11,7 +11,7 @@ export const TRANSACTION_HISTORY_SUCCESS = `${prefix}/TRANSACTION_HISTORY_SUCCES
 
 //Reducer
 export const ReducerRecord = Record({
-  transactions: null,
+  history: null,
   error: null,
   loading: false
 });
@@ -23,7 +23,7 @@ export default function reducer(state = new ReducerRecord(), action) {
     case TRANSACTION_HISTORY_REQUEST:
       return state.set('loading', true);
     case TRANSACTION_HISTORY_SUCCESS:
-      return state.set('transactions', payload);
+      return state.set('history', payload);
     default:
       return state;
   }

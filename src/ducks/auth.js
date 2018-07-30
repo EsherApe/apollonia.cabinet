@@ -1,11 +1,11 @@
-import { appName } from "../config";
+import { appName, apiEndpoint } from "../config";
 import { Record } from 'immutable';
 import { all, take, call, put, takeEvery } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 import { postData } from './utils';
 
 const ReducerRecord = Record({
-  user: null,
+  user: {},
   error: null,
   loading: false
 });
@@ -79,18 +79,19 @@ export const signInSaga = function* () {
   while (true) {
     const action = yield take(SIGN_IN_REQUEST);
 
-    try {
-      const user = yield call(postData, `/services/auth/login`, action.payload);
-      yield put({
-        type: SIGN_IN_SUCCESS,
-        payload: {user}
-      });
-      yield put(push('/purchase'));
-    } catch (error) {
+    const response = yield call(postData, `${apiEndpoint}/services/auth/login`, action.payload);
+
+    if(response.error) {
       yield put({
         type: SIGN_IN_ERROR,
-        error
+        error: {...response}
       });
+    } else {
+      yield put({
+        type: SIGN_IN_SUCCESS,
+        payload: {response}
+      });
+      yield put(push('/purchase'));
     }
   }
 };
@@ -98,18 +99,20 @@ export const signInSaga = function* () {
 export const signUpSaga = function* () {
   while (true) {
     const action = yield take(SIGN_UP_REQUEST);
-    try {
-      const user = yield call(postData, `/services/auth/register`, action.payload);
-      yield put({
-        type: SIGN_UP_SUCCESS,
-        payload: {user}
-      });
-      yield put(push('/purchase'));
-    } catch (error) {
+
+    const response = yield call(postData, `${apiEndpoint}/services/auth/register`, action.payload);
+
+    if(response.error) {
       yield put({
         type: SIGN_UP_ERROR,
-        error
-      })
+        error: {...response}
+      });
+    } else {
+      yield put({
+        type: SIGN_UP_SUCCESS,
+        payload: {response}
+      });
+      yield put(push('/purchase'));
     }
   }
 };

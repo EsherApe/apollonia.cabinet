@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import {Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {moduleName} from '../../ducks/auth';
@@ -8,7 +8,9 @@ class ProtectedRoute extends Component {
   render() {
     const {component, ...rest} = this.props;
     return (
-      <Route {...rest} render={this.renderProtected}/>
+      <Fragment>
+        <Route {...rest} render={this.renderProtected}/>
+      </Fragment>
     );
   }
 
@@ -19,5 +21,5 @@ class ProtectedRoute extends Component {
 }
 
 export default connect(state => ({
-  authorized: !!state[moduleName].user
+  authorized: !!state[moduleName].user.token
 }), null, null, {pure: false})(ProtectedRoute);

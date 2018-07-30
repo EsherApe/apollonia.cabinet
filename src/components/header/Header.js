@@ -59,5 +59,5 @@ Header.propTypes = {
 };
 
 export default connect(state => ({
-  authorized: !!state[moduleName].user
+  authorized: !!state[moduleName].user.token
 }), {signIn, signOut})(Header);

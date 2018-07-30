@@ -44,5 +44,5 @@ HeaderNavAuthorized.propTypes = {
 };
 
 export default connect(state => ({
-  firstName: state[moduleName].user.firstName
+  firstName: state[moduleName].user.token
 }))(HeaderNavAuthorized);

@@ -5,6 +5,7 @@ import SignInText from './SignInText';
 import ErrorField from '../common/ErrorField';
 import signInBg from '../../img/side_bkg_right.svg';
 import { validate as emailValidate } from "email-validator/index";
+import { ToastContainer, toast } from 'react-toastify';
 
 class SignInForm extends Component {
   render() {
@@ -32,7 +33,7 @@ class SignInForm extends Component {
                       </FormGroup>
                     </Col>
                     <Col xs='4'>
-                      <button type='submit' className='btn btn-primary sign-in__login-btn'>LOGIN</button>
+                      <button className='btn btn-primary sign-in__login-btn'>LOGIN</button>
                     </Col>
                   </Row>
                 </Form>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Table, Col } from 'reactstrap';
 import {connect} from 'react-redux';
-import {moduleName} from '../../ducks/user';
+import {moduleName} from '../../ducks/transactions';
 
 class TransactionsTable extends Component {
   render() {
