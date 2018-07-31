@@ -19,3 +19,12 @@ export function postData(url, payload) {
     })
     .catch(error => error)
 }
+
+export function getData(url) {
+  return fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      return data
+    })
+    .catch(error => error)
+}

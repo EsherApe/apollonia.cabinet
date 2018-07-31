@@ -5,7 +5,6 @@ import SignInText from './SignInText';
 import ErrorField from '../common/ErrorField';
 import signInBg from '../../img/side_bkg_right.svg';
 import { validate as emailValidate } from "email-validator/index";
-import { ToastContainer, toast } from 'react-toastify';
 
 class SignInForm extends Component {
   render() {

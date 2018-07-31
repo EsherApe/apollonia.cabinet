@@ -33,7 +33,7 @@ export default function reducer(state = new ReducerRecord(), action) {
     case SIGN_UP_SUCCESS:
       return state
         .set('loading', false)
-        .set('user', payload.user)
+        .set('user', payload)
         .set('error', null);
     case SIGN_IN_ERROR:
     case SIGN_UP_ERROR:
