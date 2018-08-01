@@ -25,7 +25,6 @@ class AuthPage extends Component {
 
   handleSignIn = ({email, password}) => this.props.signIn(email, password);
   handleSignUp = ({email, password, firstName, middleName, lastName, countryCode, skypeId, telegramId}) => {
-    console.log('handleSignUp');
     this.props.signUp(email, password, firstName, middleName, lastName, countryCode, skypeId, telegramId
     )
   };

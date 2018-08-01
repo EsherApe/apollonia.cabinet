@@ -22,6 +22,16 @@
     border-radius: 50%;
     margin-right: 4rem;
     flex-shrink: 0;
+    cursor: pointer;
+    label {
+      cursor: pointer;
+    }
+    input {
+      display: none;
+      &:checked {
+
+      }
+    }
     &:hover {
       background: $hover-color;
       .bitcoin {
@@ -57,18 +67,25 @@
     color: #fff;
     background: $hover-color;
     border-radius: 50%;
+    input {
+      background-color: transparent;
+      color: #fff;
+      &:focus {
+        background: transparent;
+        color: #fff;
+      }
+    }
+    .error-text {
+      text-align: center;
+    }
   }
-  &__input, &__output-box {
+  &__output-box, &__input-box input {
     text-align: center;
     border: 0;
     font-size: 14px;
     &:active, &:focus {
       outline: none;
     }
-  }
-  &__input {
-    background-color: transparent;
-    color: #fff;
   }
   &__output-box {
     font-weight: 600;

@@ -1,7 +1,7 @@
 import { all, call, put, take } from 'redux-saga/effects';
 import { apiEndpoint, appName } from '../config';
 import { OrderedMap, Record } from 'immutable';
-import { getData, dataToEntities } from "./utils";
+import { postData, getData, dataToEntities } from "./utils";
 import { createSelector } from "reselect";
 
 //Constants
@@ -11,6 +11,9 @@ const prefix = `${appName}/${moduleName}`;
 export const GET_HISTORY_REQUEST = `${prefix}/GET_HISTORY_REQUEST`;
 export const GET_HISTORY_SUCCESS = `${prefix}/GET_HISTORY_SUCCESS`;
 export const GET_HISTORY_ERROR = `${prefix}/GET_HISTORY_ERROR`;
+export const BUY_COIN_REQUEST = `${prefix}/BUY_COIN_REQUEST`;
+export const BUY_COIN_SUCCESS = `${prefix}/BUY_COIN_SUCCESS`;
+export const BUY_COIN_ERROR = `${prefix}/BUY_COIN_ERROR`;
 
 //Reducer
 export const ReducerRecord = Record({
@@ -64,6 +67,13 @@ export function getHistory() {
   }
 }
 
+export function buyCoin(currency, currencyAmount, wallet, amount) {
+  return {
+    type: BUY_COIN_REQUEST,
+    payload: {currency, currencyAmount, wallet, amount}
+  }
+}
+
 //Sagas
 export const getHistorySaga = function* () {
   while (true) {
@@ -85,8 +95,18 @@ export const getHistorySaga = function* () {
   }
 };
 
+export const buyCoinSaga = function* () {
+  while(true) {
+    const action = yield take(BUY_COIN_REQUEST);
+    const response = yield call(postData, `${apiEndpoint}/services/user/buy/tokens`, action.payload);
+
+    console.log(response);
+  }
+};
+
 export function* saga() {
   yield all([
-    getHistorySaga()
+    getHistorySaga(),
+    buyCoinSaga()
   ])
 }
