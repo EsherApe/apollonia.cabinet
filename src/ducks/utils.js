@@ -1,3 +1,11 @@
+import { Map, OrderedMap } from "immutable";
+
+export function dataToEntities(data, RecordModel = Map) {
+  return (new OrderedMap(data)).mapEntries(([id, value]) => (
+    [id, (new RecordModel(value)).set('id', id)]
+  ))
+}
+
 export function postData(url, payload) {
   const data = {};
   const payloadKeys = Object.keys(payload);

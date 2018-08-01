@@ -47,14 +47,31 @@
 }
 
 .amount {
-  &__btn {
+  &__input-box,
+  &__output-box {
     width: 24rem;
     height: 24rem;
     background-color: #fff;
-    &--active, &:hover {
-      color: #fff;
-      background: $hover-color;
+  }
+  &__input-box {
+    color: #fff;
+    background: $hover-color;
+    border-radius: 50%;
+  }
+  &__input, &__output-box {
+    text-align: center;
+    border: 0;
+    font-size: 14px;
+    &:active, &:focus {
+      outline: none;
     }
+  }
+  &__input {
+    background-color: transparent;
+    color: #fff;
+  }
+  &__output-box {
+    font-weight: 600;
   }
 }
 

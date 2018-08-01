@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Table, Col } from 'reactstrap';
 import {connect} from 'react-redux';
-import {moduleName, getHistory} from '../../ducks/transactions';
+import {moduleName, getHistory, transactionsListSelector} from '../../ducks/user';
 import Loader from '../common/Loader';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -11,7 +11,7 @@ class TransactionsTable extends Component {
   }
 
   render() {
-    const {loading, error} = this.props;
+    const {loading, error, history} = this.props;
     return (
       <Fragment>
         <Col xs='12' lg='8'>
@@ -30,7 +30,7 @@ class TransactionsTable extends Component {
               </tr>
               </thead>
               <tbody>
-              {this.getRows()}
+              {history.length ? this.getRows() : <tr><td colSpan={5} style={{color: 'red'}}>No transactions yet!</td></tr>}
               </tbody>
             </Table>
           </div>
@@ -49,7 +49,7 @@ class TransactionsTable extends Component {
   notify = () => toast.error(this.props.error.error);
 
   getRows() {
-    return this.props.transactionHistory.map(this.getRow)
+    return this.props.history.map(this.getRow)
   }
 
   getRow = (transaction) => {
@@ -66,5 +66,5 @@ class TransactionsTable extends Component {
 export default connect(state => ({
   loading: state[moduleName].loading,
   error: state[moduleName].error,
-  transactionHistory: state[moduleName].get('history').toArray()
+  history: transactionsListSelector(state)
 }), {getHistory})(TransactionsTable);

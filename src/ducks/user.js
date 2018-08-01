@@ -1,10 +1,11 @@
 import { all, call, put, take } from 'redux-saga/effects';
 import { apiEndpoint, appName } from '../config';
-import { OrderedSet, Record } from 'immutable';
-import { getData } from "./utils";
+import { OrderedMap, Record } from 'immutable';
+import { getData, dataToEntities } from "./utils";
+import { createSelector } from "reselect";
 
 //Constants
-export const moduleName = 'transactions';
+export const moduleName = 'user';
 const prefix = `${appName}/${moduleName}`;
 
 export const GET_HISTORY_REQUEST = `${prefix}/GET_HISTORY_REQUEST`;
@@ -13,30 +14,20 @@ export const GET_HISTORY_ERROR = `${prefix}/GET_HISTORY_ERROR`;
 
 //Reducer
 export const ReducerRecord = Record({
-  history: new OrderedSet([
-    {
-      amount: 12,
-      created: "2018-07-31T10:56:24.388Z",
-      currency: "BITCOIN",
-      currencyAmount: 234,
-      id: 0,
-      nativeAmount: 0,
-      status: "CREATED",
-      wallet: "string"
-    },
-    {
-      amount: 2342,
-      created: "2018-07-31T10:56:24.388Z",
-      currency: "EOS",
-      currencyAmount: 324,
-      id: 1,
-      nativeAmount: 0,
-      status: "CREATED",
-      wallet: "string"
-    }
-  ]),
+  history: new OrderedMap({}),
   error: null,
   loading: false
+});
+
+export const TransactionRecord = Record({
+  id: null,
+  amount: null,
+  created: null,
+  currency: null,
+  currencyAmount: null,
+  nativeAmount: null,
+  status: null,
+  wallet: null
 });
 
 export default function reducer(state = new ReducerRecord(), action) {
@@ -48,7 +39,7 @@ export default function reducer(state = new ReducerRecord(), action) {
     case GET_HISTORY_SUCCESS:
       return state
         .set('loading', false)
-        .set('history', payload)
+        .set('history', dataToEntities(payload, TransactionRecord))
         .set('error', null);
     case GET_HISTORY_ERROR:
       return state
@@ -60,7 +51,11 @@ export default function reducer(state = new ReducerRecord(), action) {
 }
 
 //Selectors
-
+export const stateSelector = state => state[moduleName];
+export const historySelector = createSelector(stateSelector, state => state.history);
+export const transactionsListSelector = createSelector(historySelector, entities => (
+  entities.valueSeq().toArray()
+));
 
 //Action creators
 export function getHistory() {
