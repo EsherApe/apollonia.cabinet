@@ -1,5 +1,23 @@
 @import "../../variables";
 
+@mixin coinIconsHoverStyles {
+  .bitcoin {
+    background-position: -0px -0px !important;
+  }
+  .bitcoin-alt {
+    background-position: -0px -122px;
+  }
+  .eos {
+    background-position: -0px -336px;
+  }
+  .ethereum {
+    background-position: -0px -458px;
+  }
+  .litecoin {
+    background-position: -0px -242px;
+  }
+}
+
 .purchase {
   background: no-repeat top right;
   &__title {
@@ -16,43 +34,33 @@
 }
 
 .currency {
-  &__item {
-    width: 10rem;
-    height: 10rem;
-    border-radius: 50%;
+  &__list-item {
     margin-right: 4rem;
     flex-shrink: 0;
-    cursor: pointer;
-    label {
-      cursor: pointer;
-    }
-    input {
-      display: none;
-      &:checked {
-
-      }
-    }
     &:hover {
-      background: $hover-color;
-      .bitcoin {
-        background-position: -0px -0px;
-      }
-      .bitcoin-alt {
-        background-position: -0px -122px;
-      }
-      .eos {
-        background-position: -0px -336px;
-      }
-      .ethereum {
-        background-position: -0px -458px;
-      }
-      .litecoin {
-        background-position: -0px -242px;
+      .currency__item {
+        background: $hover-color;
+        @include coinIconsHoverStyles;
       }
     }
   }
   &__icon {
     transform: scale(0.8);
+  }
+  &__item {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  &__input {
+    display: none;
+    &:checked {
+      ~ .currency__item {
+        background: $hover-color;
+        @include coinIconsHoverStyles;
+      }
+    }
   }
 }
 

@@ -38,13 +38,18 @@ export default function reducer(state = new ReducerRecord(), action) {
 
   switch (type) {
     case GET_HISTORY_REQUEST:
+    case BUY_COIN_REQUEST:
       return state.set('loading', true);
     case GET_HISTORY_SUCCESS:
       return state
         .set('loading', false)
         .set('history', dataToEntities(payload, TransactionRecord))
         .set('error', null);
+    case BUY_COIN_SUCCESS:
+      return state
+        .set('loading', false);
     case GET_HISTORY_ERROR:
+    case BUY_COIN_ERROR:
       return state
         .set('loading', false)
         .set('error', error);
@@ -100,7 +105,16 @@ export const buyCoinSaga = function* () {
     const action = yield take(BUY_COIN_REQUEST);
     const response = yield call(postData, `${apiEndpoint}/services/user/buy/tokens`, action.payload);
 
-    console.log(response);
+    if(response.error) {
+      yield put({
+        type: BUY_COIN_ERROR,
+        error: {...response}
+      })
+    } else {
+      yield put({
+        type: BUY_COIN_SUCCESS
+      })
+    }
   }
 };
 
