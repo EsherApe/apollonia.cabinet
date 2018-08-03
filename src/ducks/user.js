@@ -11,12 +11,18 @@ const prefix = `${appName}/${moduleName}`;
 export const GET_HISTORY_REQUEST = `${prefix}/GET_HISTORY_REQUEST`;
 export const GET_HISTORY_SUCCESS = `${prefix}/GET_HISTORY_SUCCESS`;
 export const GET_HISTORY_ERROR = `${prefix}/GET_HISTORY_ERROR`;
+
 export const BUY_COIN_REQUEST = `${prefix}/BUY_COIN_REQUEST`;
 export const BUY_COIN_SUCCESS = `${prefix}/BUY_COIN_SUCCESS`;
 export const BUY_COIN_ERROR = `${prefix}/BUY_COIN_ERROR`;
 
+export const GENERATE_ADDRESS_REQUEST = `${prefix}/GENERATE_ADDRESS_REQUEST`;
+export const GENERATE_ADDRESS_SUCCESS = `${prefix}/GENERATE_ADDRESS_SUCCESS`;
+export const GENERATE_ADDRESS_ERROR = `${prefix}/GENERATE_ADDRESS_ERROR`;
+
 //Reducer
 export const ReducerRecord = Record({
+  generatedAddress: '',
   history: new OrderedMap({}),
   error: null,
   loading: false
@@ -39,6 +45,7 @@ export default function reducer(state = new ReducerRecord(), action) {
   switch (type) {
     case GET_HISTORY_REQUEST:
     case BUY_COIN_REQUEST:
+    case GENERATE_ADDRESS_REQUEST:
       return state.set('loading', true);
     case GET_HISTORY_SUCCESS:
       return state
@@ -48,8 +55,12 @@ export default function reducer(state = new ReducerRecord(), action) {
     case BUY_COIN_SUCCESS:
       return state
         .set('loading', false);
+    case GENERATE_ADDRESS_SUCCESS:
+      return state
+        .set('generatedAddress', payload);
     case GET_HISTORY_ERROR:
     case BUY_COIN_ERROR:
+    case GENERATE_ADDRESS_ERROR:
       return state
         .set('loading', false)
         .set('error', error);
@@ -72,10 +83,17 @@ export function getHistory() {
   }
 }
 
-export function buyCoin(currency, currencyAmount, wallet, amount) {
+export function buyCoin(currency, currencyAmount, wallet, generatedAddress) {
   return {
     type: BUY_COIN_REQUEST,
-    payload: {currency, currencyAmount, wallet, amount}
+    payload: {currency, currencyAmount, wallet, generatedAddress}
+  }
+}
+
+export function generateAddress(walletType) {
+  return {
+    type: GENERATE_ADDRESS_REQUEST,
+    payload: {walletType}
   }
 }
 
@@ -101,7 +119,7 @@ export const getHistorySaga = function* () {
 };
 
 export const buyCoinSaga = function* () {
-  while(true) {
+  while (true) {
     const action = yield take(BUY_COIN_REQUEST);
     const response = yield call(postData, `${apiEndpoint}/services/user/buy/tokens`, action.payload);
 
@@ -118,9 +136,33 @@ export const buyCoinSaga = function* () {
   }
 };
 
+export const generateAddressSaga = function* () {
+  while (true) {
+    const action = yield take(GENERATE_ADDRESS_REQUEST);
+    const {walletType} = action.payload;
+
+    console.log(walletType);
+
+    const response = yield call(getData, `${apiEndpoint}/services/user/address/${walletType}`);
+
+    if(response.error) {
+      yield put({
+        type: GENERATE_ADDRESS_ERROR,
+        error: {...response}
+      })
+    } else {
+      yield put({
+        type: GENERATE_ADDRESS_SUCCESS,
+        payload: {...response}
+      })
+    }
+  }
+};
+
 export function* saga() {
   yield all([
     getHistorySaga(),
-    buyCoinSaga()
+    buyCoinSaga(),
+    generateAddressSaga()
   ])
 }

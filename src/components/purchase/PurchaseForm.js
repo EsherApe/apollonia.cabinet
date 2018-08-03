@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import { FormGroup, Input, Form, Row } from 'reactstrap';
+import { reduxForm, Field } from 'redux-form';
 import CurrencyList from "./CurrencyList";
 import WalletAddress from "./WalletAddress";
 import Amount from "./Amount";
 import ConfirmPurchase from "./ConfirmPurchase";
-import { reduxForm } from 'redux-form';
+import ErrorField from '../common/ErrorField';
 
 class PurchaseForm extends Component {
   render() {
-    const {handleSubmit, error} = this.props;
+    const {handleSubmit, address} = this.props;
     return (
       <div className='purchase__form w-100'>
         <Form onSubmit={handleSubmit}>
           <Row className='purchase__form-row'>
-            <CurrencyList error={error}/>
+            <CurrencyList/>
             <WalletAddress/>
           </Row>
           <Row className='purchase__form-row'>
@@ -24,7 +25,7 @@ class PurchaseForm extends Component {
               <div className='confirm-purchase__input-box'>
                 <h5 className="font-weight-bold">Confirm operation and send your currency on following address:</h5>
                 <FormGroup>
-                  <Input type='text' placeholder='GENERATED APOLLONIA WALLET ADDRESS'/>
+                  <Field name='generatedAddress' type='text' placeholder='GENERATED APOLLONIA WALLET ADDRESS' defaultValue={address} component={ErrorField}/>
                 </FormGroup>
               </div>
             </ConfirmPurchase>
@@ -35,11 +36,11 @@ class PurchaseForm extends Component {
   }
 }
 
-const validate = ({currency, currencyAmount, wallet, amount}) => {
+const validate = ({currency, currencyAmount, wallet, generatedAddress}) => {
   const errors = {};
 
   if(!currency) {
-    errors.currency = 'choose currency!';
+    errors.generatedAddress = 'choose currency!';
   }
 
   if(!currencyAmount) {

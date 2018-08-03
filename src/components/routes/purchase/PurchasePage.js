@@ -20,7 +20,7 @@ class Purchase extends Component {
               </span>
             </Row>
             <Row>
-              <PurchaseForm onSubmit={this.handlePurchaseForm}/>
+              <PurchaseForm onSubmit={this.handlePurchaseForm} address={this.props.generatedAddress}/>
             </Row>
           </Col>
         </Container>
@@ -28,13 +28,13 @@ class Purchase extends Component {
     );
   }
 
-  handlePurchaseForm = (currency, currencyAmount, wallet, amount) => {
-    console.log('handlePurchaseForm');
-    return this.props.buyCoin(currency, currencyAmount, wallet, amount)
+  handlePurchaseForm = (currency, currencyAmount, wallet, generatedAddress) => {
+    return this.props.buyCoin(currency, currencyAmount, wallet, generatedAddress)
   }
 }
 
 export default connect(state => ({
   loading: state[moduleName].loading,
-  error: state[moduleName].error
+  error: state[moduleName].error,
+  generatedAddress: state[moduleName].generatedAddress,
 }), {buyCoin})(Purchase);
