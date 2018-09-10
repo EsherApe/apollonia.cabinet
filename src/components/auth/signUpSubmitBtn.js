@@ -5,7 +5,7 @@ function signUpSubmitBtn(props) {
   const errorText = touched && error && <div style={{color: 'red'}}>{error}</div>;
   return (
     <Fragment>
-      <button type='submit' {...input} className='sign-up__btn font-weight-bold text-uppercase text-primary'>Register my profile</button>
+      <button type='submit' {...input} className='btn sign-up__btn text-primary mt-3'>Register my profile</button>
       {errorText}
     </Fragment>
   );

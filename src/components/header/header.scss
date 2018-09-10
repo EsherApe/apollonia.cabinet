@@ -2,7 +2,7 @@
 
 .header {
   &__navbar {
-    padding-top: 3rem;
+    padding-top: 5rem;
     padding-bottom: 3rem;
   }
   &__img {
@@ -29,5 +29,8 @@
   }
   &__user-greeting {
     margin-left: 3rem;
+    a {
+      color: #fff;
+    }
   }
 }

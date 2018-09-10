@@ -1,7 +1,21 @@
 @import "../../variables";
 
 .sign-up {
-  background: no-repeat top right;
+  padding-bottom: 5rem;
+  margin-bottom: -11rem;
+  background-size: 82%;
+  background-repeat: no-repeat;
+  background-position: top right;
+  &--left {
+    .form-control {
+      background-color: $field-color;
+    }
+  }
+  &--right {
+    .form-group {
+      color: #fff;
+    }
+  }
   &__form-title {
     margin-top: 5rem;
   }
@@ -9,11 +23,7 @@
     padding-left: 5rem;
   }
   &__btn {
-    text-decoration: underline;
-    font-size: 2.4rem;
-    border: 0;
-    padding: 0;
-    background: transparent;
+    width: 20rem;
     cursor: pointer;
     &:focus {
       outline: 0;
@@ -22,52 +32,78 @@
 }
 
 .agreement {
-  margin-top: 5rem;
+  margin-top: 2rem;
   &__title {
     font-weight: 400;
+    color: #fff;
   }
   &__text {
-    //font-weight: 100;
+    font-weight: 200;
     margin-bottom: 3rem;
     font-size: 2rem;
+    color: #fff;
   }
   &__link {
     text-decoration: underline;
+    color: #fff;
   }
   &__btn {
-    width: 16rem;
-    height: 16rem;
-    background: #fff;
-    color: $primary;
-    border: 2px solid $primary;
+    width: 20rem;
+    background: #1e80d0;
+    color: #fff;
+    border: 1px solid #fff;
     font-weight: bold;
     flex-shrink: 0;
-    &:hover, &:focus, &:active {
+    &:hover {
       background: $hover-color;
+      border-color: $hover-color;
       color: #fff;
-      border: 0;
     }
   }
 }
 
 .sign-in {
-  background: no-repeat top right;
+  .container {
+    background: no-repeat top right;
+    background-size: contain;
+  }
   &__form {
-    margin-bottom: 9rem;
     margin-top: 2rem;
+    &-title {
+      font-size: 2rem;
+      color: $secondary;
+      font-weight: 300;
+    }
+    &-text {
+      font-size: 2rem;
+      margin-top: 3rem;
+      font-weight: 300;
+      color: $secondary;
+    }
+  }
+  &__title {
+    margin-left: 3rem;
+    margin-top: 8rem;
+    font-size: 9rem;
+    color: #0083d5;
+    font-weight: 700;
+  }
+  &__subtitle {
+    font-weight: 300;
+    font-size: 6rem;
+    a {
+      color: #88b7da;
+    }
   }
   &__login-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2rem;
-    width: 15rem;
-    height: 15rem;
+    margin-top: 0.5rem;
+    flex: 1;
   }
-  &__text {
-    font-size: 2rem;
-    margin-top: 3rem;
-    font-weight: 600;
+  &__text-box {
+    margin-top: 13rem;
+  }
+  .form-control {
+    background-color: $field-color;
   }
 }
 
@@ -75,9 +111,36 @@
   display: none;
   &:checked {
     ~ .agreement__btn {
-      background: linear-gradient(to bottom, #69abdf 0%, #00519f 100%);
+      background: $hover-color;
+      border-color: $hover-color;
       color: #fff;
-      border: 0;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .sign-up {
+    background-image: none!important;
+    &--right {
+      .form-control {
+        background-color: $field-color;
+      }
+      .form-group {
+        color: #000;
+      }
+    }
+  }
+  .agreement {
+    &__title, &__text {
+      color: $secondary;
+    }
+  }
+  .sign-in {
+    .container {
+      background-image: none;
+    }
+    &__title {
+      margin-left: 0;
     }
   }
 }

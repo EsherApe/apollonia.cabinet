@@ -1,37 +1,34 @@
+//.bitcoin, .bitcoin-alt, .litecoin, .eos, .ethereum {
+//  display: inline-block;
+//  background: url('./img/currencies/currencies-sprite.png') no-repeat;
+//  overflow: hidden;
+//  text-indent: -9999px;
+//  text-align: left;
+//}
+
 .bitcoin, .bitcoin-alt, .litecoin, .eos, .ethereum {
-  display: inline-block;
-  background: url('./img/currencies/currencies-sprite.png') no-repeat;
-  overflow: hidden;
-  text-indent: -9999px;
-  text-align: left;
+  width: 5.5rem;
+  height: 5.5rem;
+  background-size: 3.4rem!important;
+  background-position: 50% 50% !important;
 }
 
 .bitcoin {
-  background-position: -0px -61px;
-  width: 45px;
-  height: 61px;
+  background: url("./img/currencies/bitcoin.png") no-repeat;
 }
 
 .bitcoin-alt {
-  background-position: -0px -182px;
-  width: 44px;
-  height: 60px;
+  background: url("./img/currencies/bitcoin-alt.png") no-repeat;
 }
 
 .litecoin {
-  background-position: -0px -289px;
-  width: 44px;
-  height: 47px;
+  background: url("./img/currencies/litecoin.png") no-repeat;
 }
 
 .eos {
-  background-position: -0px -397px;
-  width: 41px;
-  height: 61px;
+  background: url("./img/currencies/eos.png") no-repeat;
 }
 
 .ethereum {
-  background-position: -0px -522px;
-  width: 39px;
-  height: 64px;
+  background: url("./img/currencies/ethereum.png") no-repeat;
 }

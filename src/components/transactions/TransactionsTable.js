@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 class TransactionsTable extends Component {
   componentDidMount() {
-    this.props.getHistory();
+    // this.props.getHistory();
   }
 
   render() {
@@ -15,9 +15,6 @@ class TransactionsTable extends Component {
     return (
       <Fragment>
         <Col xs='12' lg='8'>
-          <h2 className='transactions-table__title mb-0'>Transactions</h2>
-          <p className='transactions-table__subtitle text-secondary'>Average transaction process may take 15 minutes and
-            above.</p>
           <div className='transactions-table__table-box'>
             <Table className='transactions-table__table text-center font-weight-bold' borderless>
               <thead>
@@ -35,8 +32,7 @@ class TransactionsTable extends Component {
             </Table>
           </div>
           <div className='transactions-table__contacts text-secondary'>
-            For any support and questions, <a href="" className='transactions-table__contacts-link text-secondary'>contact
-            with us.</a>
+            Average transaction process may take 15 minutes and above. For any support and questions, contact with us.
           </div>
         </Col>
         {loading && <Loader/>}

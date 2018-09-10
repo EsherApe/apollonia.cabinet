@@ -10,24 +10,20 @@ class HeaderNavAuthorized extends Component {
   render() {
     return (
       <Fragment>
-        <Nav className="ml-auto" navbar>
-          <NavItem>
-            <NavLink to="/transactions"
-                     className='m-auto header__link'>Transactions</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to='/purchase'
-                     className='m-auto header__link'>Buy APO coin</NavLink>
-          </NavItem>
-        </Nav>
+        {/*<Nav className="ml-auto" navbar>*/}
+          {/*<NavItem>*/}
+            {/*<NavLink to="/transactions"*/}
+                     {/*className='m-auto header__link'>Transactions</NavLink>*/}
+          {/*</NavItem>*/}
+          {/*<NavItem>*/}
+            {/*<NavLink to='/purchase'*/}
+                     {/*className='m-auto header__link'>Buy APO coin</NavLink>*/}
+          {/*</NavItem>*/}
+        {/*</Nav>*/}
         <Nav className="ml-auto" navbar>
           <NavItem>
             <div className='d-flex align-items-center justify-content-center'>
-              <a href=''>
-                <img src={userImg} className='header__img' alt=""/>
-              </a>
               <div className='header__user-greeting'>
-                <div>Hello, {this.props.firstName}!</div>
                 <a href='' className='font-weight-bold' onClick={this.props.signOut}>LOGOUT</a>
               </div>
             </div>
@@ -40,7 +36,7 @@ class HeaderNavAuthorized extends Component {
 
 HeaderNavAuthorized.propTypes = {
   signOut: PropTypes.func.isRequired,
-  firstName: PropTypes.string.isRequired
+  // firstName: PropTypes.string.isRequired
 };
 
 export default connect(state => ({

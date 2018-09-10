@@ -34,8 +34,9 @@ class Header extends Component {
 
   render() {
     const headerNav = () => {
-      return this.props.authorized ? <HeaderNavAuthorized signOut={this.handleSignOut}/> :
-        <HeaderNavNotAuthorized signIn={this.handleSignIn}/>
+      return this.props.authorized
+        ? <HeaderNavAuthorized signOut={this.handleSignOut}/>
+        : <HeaderNavNotAuthorized signIn={this.handleSignIn}/>
     };
     return (
       <header className='header'>
@@ -59,5 +60,6 @@ Header.propTypes = {
 };
 
 export default connect(state => ({
-  authorized: !!state[moduleName].user.token
+  // authorized: !!state[moduleName].user.token
+  authorized: true
 }), {signIn, signOut})(Header);

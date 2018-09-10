@@ -1,15 +1,17 @@
-import React, { Component } from 'react';
-import { Col, Button } from 'reactstrap';
+import React, {Component} from 'react';
+import {FormGroup} from 'reactstrap';
+import {Field} from 'redux-form';
+import ErrorField from "../common/ErrorField";
 
 class ConfirmPurchase extends Component {
   render() {
     return (
-      <Col xs='12'>
-        <div className='d-flex align-items-center'>
-          <Button className='confirm-purchase__btn'>CONFIRM</Button>
-          {this.props.children}
-        </div>
-      </Col>
+      <div className='confirm-purchase__input-box'>
+        <h5 className="font-weight-bold">Wallet for transaction</h5>
+        <FormGroup>
+          <Field name='generatedAddress' type='text' component={ErrorField}/>
+        </FormGroup>
+      </div>
     );
   }
 }

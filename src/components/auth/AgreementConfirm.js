@@ -7,7 +7,7 @@ const AgreementConfirm = (props) => {
       <label>
         <Field name={props.name} component='input' type="checkbox" className='confirm-checkbox'/>
         <div className='agreement__btn btn btn-secondary d-flex justify-content-center align-items-center'>
-          <span>Confirm <br/> and accept</span>
+          Confirm and accept
         </div>
       </label>
     </Fragment>

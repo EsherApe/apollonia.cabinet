@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { FormGroup, Input, Form, Row } from 'reactstrap';
-import { reduxForm, Field } from 'redux-form';
+import React, {Component} from 'react';
+import {FormGroup, Input, Form, Row, Col} from 'reactstrap';
+import {reduxForm, Field} from 'redux-form';
 import CurrencyList from "./CurrencyList";
 import WalletAddress from "./WalletAddress";
 import Amount from "./Amount";
@@ -14,21 +14,27 @@ class PurchaseForm extends Component {
       <div className='purchase__form w-100'>
         <Form onSubmit={handleSubmit}>
           <Row className='purchase__form-row'>
-            <CurrencyList/>
-            <WalletAddress/>
-          </Row>
-          <Row className='purchase__form-row'>
-            <Amount/>
-          </Row>
-          <Row className='purchase__form-row'>
-            <ConfirmPurchase>
-              <div className='confirm-purchase__input-box'>
-                <h5 className="font-weight-bold">Confirm operation and send your currency on following address:</h5>
-                <FormGroup>
-                  <Field name='generatedAddress' type='text' placeholder='GENERATED APOLLONIA WALLET ADDRESS' defaultValue={address} component={ErrorField}/>
-                </FormGroup>
+            <Col xs='12' md='5' lg='4' className='purchase__form--left'>
+              <CurrencyList/>
+            </Col>
+            <Col xs='12' md='7' lg={{size: 7, offset: 1}} className='purchase__form--right'>
+              <div className="purchase__row">
+                <Amount/>
               </div>
-            </ConfirmPurchase>
+              <div className="purchase__row">
+                <WalletAddress/>
+              </div>
+              <div className="purchase__row">
+                <ConfirmPurchase/>
+              </div>
+              <div className="purchase__row">
+                <h5 className="font-weight-bold">Status</h5>
+                <FormGroup>
+                  <Field name='purchaseStatus' type='text' component={ErrorField}/>
+                </FormGroup>
+                Average transaction process may take 15 minutes and above. For any support and questions, contact with us.
+              </div>
+            </Col>
           </Row>
         </Form>
       </div>
@@ -39,15 +45,15 @@ class PurchaseForm extends Component {
 const validate = ({currency, currencyAmount, wallet, generatedAddress}) => {
   const errors = {};
 
-  if(!currency) {
+  if (!currency) {
     errors.generatedAddress = 'choose currency!';
   }
 
-  if(!currencyAmount) {
+  if (!currencyAmount) {
     errors.currencyAmount = 'set currency amount!';
   }
 
-  if(!wallet) {
+  if (!wallet) {
     errors.wallet = 'enter your wallet address!'
   }
 

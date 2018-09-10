@@ -3,7 +3,7 @@ import React from 'react';
 const Agreement = (props) => {
   return (
     <div className='agreement'>
-      <h4 className='agreement__title text-uppercase text-secondary'>
+      <h4 className='agreement__title text-uppercase'>
         {props.children}
       </h4>
       <p className='agreement__text'>The following Terms and Conditions ("Terms") govern your (“you” or the

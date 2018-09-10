@@ -23,7 +23,7 @@ class Root extends Component {
             </Switch>
           </div>
         </main>
-        <Footer/>
+        {/*<Footer/>*/}
       </div>
     )
   }

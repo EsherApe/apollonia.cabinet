@@ -10,7 +10,7 @@ const Footer = (props) => {
       <Container>
         <Row>
           <Copyright/>
-          <SocialList/>
+          {/*<SocialList/>*/}
         </Row>
       </Container>
     </footer>

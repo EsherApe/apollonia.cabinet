@@ -6,16 +6,16 @@ import { NavLink } from 'react-router-dom';
 const HeaderNavNotAuthorized = (props) => {
   return (
     <Fragment>
-      <Nav className="ml-auto" navbar>
-        <NavItem>
-          <NavLink to="/auth/signIn"
-                   className='m-auto header__link'>SIGN IN</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink to='/auth/signUp'
-                   className='m-auto header__link'>REGISTER</NavLink>
-        </NavItem>
-      </Nav>
+      {/*<Nav className="ml-auto" navbar>*/}
+        {/*<NavItem>*/}
+          {/*<NavLink to="/auth/signIn"*/}
+                   {/*className='m-auto header__link'>SIGN IN</NavLink>*/}
+        {/*</NavItem>*/}
+        {/*<NavItem>*/}
+          {/*<NavLink to='/auth/signUp'*/}
+                   {/*className='m-auto header__link'>REGISTER</NavLink>*/}
+        {/*</NavItem>*/}
+      {/*</Nav>*/}
     </Fragment>
   );
 };

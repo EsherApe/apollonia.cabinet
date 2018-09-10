@@ -1,25 +1,18 @@
 @import "../../variables";
 
-@mixin coinIconsHoverStyles {
-  .bitcoin {
-    background-position: -0px -0px !important;
-  }
-  .bitcoin-alt {
-    background-position: -0px -122px;
-  }
-  .eos {
-    background-position: -0px -336px;
-  }
-  .ethereum {
-    background-position: -0px -458px;
-  }
-  .litecoin {
-    background-position: -0px -242px;
-  }
-}
-
 .purchase {
   background: no-repeat top right;
+  background-size: contain;
+  &__bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 910px;
+    z-index: -1;
+  }
+  &__row {
+    margin-bottom: 5rem;
+  }
   &__title {
     margin-bottom: 0;
   }
@@ -27,57 +20,81 @@
     font-size: 2rem;
     margin-bottom: 5rem;
   }
+  &__form {
+    h5 {
+      font-size: 2.2rem;
+    }
+    margin-top: 8rem;
+    &--right {
+      color: #fff;
+    }
+  }
   &__form-row {
     margin-bottom: 5rem;
+    &:first-child {
+      margin-bottom: 8rem;
+    }
   }
 
 }
 
 .currency {
-  &__list-item {
-    margin-right: 4rem;
-    flex-shrink: 0;
-    &:hover {
-      .currency__item {
-        background: $hover-color;
-        @include coinIconsHoverStyles;
-      }
+  &__list {
+    margin-bottom: 5rem;
+    h5 {
+      margin-bottom: 5rem;
     }
-  }
-  &__icon {
-    transform: scale(0.8);
-  }
-  &__item {
-    width: 10rem;
-    height: 10rem;
-    border-radius: 50%;
-    cursor: pointer;
   }
   &__input {
     display: none;
-    &:checked {
-      ~ .currency__item {
-        background: $hover-color;
-        @include coinIconsHoverStyles;
-      }
+  }
+  &__list-item {
+
+  }
+  &__icon-checked {
+    max-width: 4rem;
+    margin-right: 3rem;
+  }
+  &__icon {
+    margin-right: 2rem;
+  }
+  &__item {
+    margin-bottom: 4rem;
+  }
+  &__item-box {
+    border: 1px solid $disable;
+    color: $disable;
+    padding: 1rem 3rem;
+    cursor: pointer;
+    font-size: 2.4rem;
+    font-weight: 400;
+    width: 26rem;
+    &--active {
+      color: #000;
+      border: 1px solid #929292;
     }
   }
 }
 
 .amount {
-  &__input-box,
-  &__output-box {
-    width: 24rem;
-    height: 24rem;
-    background-color: #fff;
+  &__title {
+    margin: 0 1rem 0 0;
   }
   &__input-box {
     color: #fff;
-    background: $hover-color;
-    border-radius: 50%;
     input {
+      border-bottom: 1px solid #fff;
       background-color: transparent;
       color: #fff;
+      padding: 0;
+      line-height: 1;
+      &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #fff;
+        opacity: 1; /* Firefox */
+      }
+      &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: #fff;
+      }
       &:focus {
         background: transparent;
         color: #fff;
@@ -88,25 +105,25 @@
     }
   }
   &__output-box, &__input-box input {
-    text-align: center;
-    border: 0;
     font-size: 14px;
+    font-weight: 600;
     &:active, &:focus {
       outline: none;
     }
   }
   &__output-box {
     font-weight: 600;
+    line-height: 1;
+    small {
+      font-weight: 600;
+      font-size: 8px;
+    }
   }
 }
 
 .confirm-purchase {
   &__btn {
-    width: 14rem;
-    height: 14rem;
-    background-color: #fff;
-    border: 2px solid $primary;
-    flex-shrink: 0;
+    color: #fff;
     &:hover {
       color: #fff;
       background: $hover-color;
@@ -114,6 +131,6 @@
     }
   }
   &__input-box {
-    padding-left: 5rem;
+
   }
 }
