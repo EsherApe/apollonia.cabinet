@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 class TransactionsTable extends Component {
   componentDidMount() {
-    // this.props.getHistory();
+    this.props.getHistory();
   }
 
   render() {

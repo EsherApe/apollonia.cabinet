@@ -6,6 +6,12 @@
   background-size: 82%;
   background-repeat: no-repeat;
   background-position: top right;
+  &__bg {
+    position: absolute;
+    top: 28px;
+    max-width: 1800px;
+    right: 0;
+  }
   &--left {
     .form-control {
       background-color: $field-color;

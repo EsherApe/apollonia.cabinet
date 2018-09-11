@@ -13,7 +13,8 @@ class SignUpForm extends Component {
     const {handleSubmit} = this.props;
 
     return (
-      <div className='sign-up' style={{backgroundImage: `url(${signUpBg})`}}>
+      <div className='sign-up'>
+        <img src={signUpBg} alt="" className='sign-up__bg'/>
         <Container>
           <Form onSubmit={handleSubmit}>
             <h2 className=''>Registration</h2>
