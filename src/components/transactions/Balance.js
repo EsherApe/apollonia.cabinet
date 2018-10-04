@@ -11,9 +11,9 @@ class Balance extends Component {
           <h5 className='balance__title mb-5'>Balance</h5>
           <div className='balance__number-box'>
             <div className='balance__number d-flex align-items-start text-primary mb-5'>
-              <span>APOLLO</span>113 933.11
+              <span>APOLLO</span><span> </span>
             </div>
-            <div className='balance__course text-secondary mb-5'>1 APO = 0,85$</div>
+            <div className='balance__course text-secondary mb-5'>1 APO = <span></span>$</div>
           </div>
           <NavLink to='/purchase'
                    className='balance__btn btn btn-primary'>Buy APOLLO</NavLink>

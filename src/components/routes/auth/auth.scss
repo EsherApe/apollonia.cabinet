@@ -87,6 +87,10 @@
       color: $secondary;
     }
   }
+  &__link {
+    position: absolute;
+    display: block;
+  }
   &__title {
     margin-left: 3rem;
     margin-top: 8rem;
@@ -147,6 +151,17 @@
     }
     &__title {
       margin-left: 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .sign-in {
+    &__link {
+      position: relative;
+    }
+    &__link, &__text-box {
+      margin-top: 5rem;
     }
   }
 }

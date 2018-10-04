@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Field} from 'redux-form';
-import {Col} from 'reactstrap';
-import {connect} from 'react-redux';
-import {NavLink} from 'react-router-dom';
-import checkedIconActive from '../../img/currencies/checked__icon--active.png';
-import checkedIcon from '../../img/currencies/checked__icon.png';
-import {generateAddress} from '../../ducks/user';
+import { Field } from 'redux-form';
+import { Col } from 'reactstrap';
+import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import checkedIconActive from '../../img/currencies/done.svg';
+import checkedIcon from '../../img/currencies/nodone.svg';
+import { generateAddress } from '../../ducks/user';
 
 class CurrencyList extends Component {
   render() {
@@ -19,9 +19,9 @@ class CurrencyList extends Component {
               <Field name='currency' type="radio" value='BTC' component='input' className='currency__input'
                      onClick={this.handleInputClick('BITCOIN')}/>
               <div className='currency__item d-flex align-items-center justify-content-start'>
-                <img src={checkedIconActive} alt="" className='currency__icon-checked'/>
+                <img src={checkedIconActive} alt="" className='currency__icon-checked currency__icon-checked--active'/>
                 <div
-                  className="currency__item-box currency__item-box--active d-flex align-items-center justify-content-start">
+                  className="currency__item-box d-flex align-items-center justify-content-start">
                   <i className='currency__icon bitcoin'> </i>
                   <span>Bitcoin</span>
                 </div>
@@ -33,7 +33,7 @@ class CurrencyList extends Component {
               <Field name='currency' type="radio" value='ALT/BTC' component='input' className='currency__input'
                      onClick={this.handleInputClick('BITCOINALT')}/>
               <div className='currency__item d-flex align-items-center justify-content-start'>
-                <img src={checkedIcon} alt="" className='currency__icon-checked'/>
+                <img src={checkedIconActive} alt="" className='currency__icon-checked'/>
                 <div className="currency__item-box d-flex align-items-center justify-content-start">
                   <i className="currency__icon bitcoin-alt"> </i>
                   <span>Bitcoin cash</span>
@@ -46,7 +46,7 @@ class CurrencyList extends Component {
               <Field name='currency' type="radio" value='EOS' component='input' className='currency__input'
                      onClick={this.handleInputClick('EOS')}/>
               <div className='currency__item d-flex align-items-center justify-content-start'>
-                <img src={checkedIcon} alt="" className='currency__icon-checked'/>
+                <img src={checkedIconActive} alt="" className='currency__icon-checked'/>
                 <div className="currency__item-box d-flex align-items-center justify-content-start">
                   <i className="currency__icon eos"> </i>
                   <span>EOS</span>
@@ -59,7 +59,7 @@ class CurrencyList extends Component {
               <Field name='currency' type="radio" value='ETH' component='input' className='currency__input'
                      onClick={this.handleInputClick('ETHEREUM')}/>
               <div className='currency__item d-flex align-items-center justify-content-start'>
-                <img src={checkedIcon} alt="" className='currency__icon-checked'/>
+                <img src={checkedIconActive} alt="" className='currency__icon-checked'/>
                 <div className="currency__item-box d-flex align-items-center justify-content-start">
                   <i className="currency__icon ethereum"> </i>
                   <span>Ethereum</span>
@@ -72,7 +72,7 @@ class CurrencyList extends Component {
               <Field name='currency' type="radio" value='LTC' component='input' className='currency__input'
                      onClick={this.handleInputClick('LITECOIN')}/>
               <div className='currency__item d-flex align-items-center justify-content-start'>
-                <img src={checkedIcon} alt="" className='currency__icon-checked'/>
+                <img src={checkedIconActive} alt="" className='currency__icon-checked'/>
                 <div className="currency__item-box d-flex align-items-center justify-content-start">
                   <i className="currency__icon litecoin"> </i>
                   <span>Lite coin</span>
@@ -81,10 +81,7 @@ class CurrencyList extends Component {
             </label>
           </li>
         </ul>
-        <NavLink to="/transactions"
-                 className='currency__btn btn btn-primary'>List of transactions</NavLink>
-
-
+        <NavLink to="/transactions" className='currency__btn btn btn-primary'>List of transactions</NavLink>
       </div>
     );
   }

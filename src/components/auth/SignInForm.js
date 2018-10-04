@@ -4,7 +4,7 @@ import {reduxForm, Field} from 'redux-form';
 import {Container, Form, FormGroup, Row, Col} from 'reactstrap';
 import SignInText from './SignInText';
 import ErrorField from '../common/ErrorField';
-import signInBg from '../../img/sign-in__img.png';
+import signInBg from '../../img/cellphone-circle__img.png';
 import {validate as emailValidate} from "email-validator/index";
 
 class SignInForm extends Component {
@@ -13,7 +13,7 @@ class SignInForm extends Component {
 
     return (
       <div className='sign-in'>
-        <Container style={{backgroundImage: `url(${signInBg})`}}>
+        <Container>
           <Row>
             <Col xs='12' md='6' lg='4'>
               <div className='sign-in__form'>
@@ -42,9 +42,10 @@ class SignInForm extends Component {
                 </Form>
               </div>
             </Col>
-            <Col xs='12' md={{size: 5, offset: 1}}>
-              <h1 className='sign-in__title'>TRY NOW</h1>
-              <h3 className='sign-in__subtitle'><a href="#">visit apollonia.online</a></h3>
+            <Col xs='12' md='6' lg='8'>
+              <a href="http://apollonia.online/" className='sign-in__link'>
+                <img src={signInBg} className='img-fluid'/>
+              </a>
             </Col>
           </Row>
           <SignInText/>
