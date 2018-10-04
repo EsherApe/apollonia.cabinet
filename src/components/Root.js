@@ -16,8 +16,8 @@ class Root extends Component {
           <Header/>
           <div className="content">
             <Switch>
-              <Route path='/purchase' component={PurchasePage}/>
-              <Route path='/transactions' component={TransactionsPage}/>
+              <ProtectedRoute path='/purchase' component={PurchasePage}/>
+              <ProtectedRoute path='/transactions' component={TransactionsPage}/>
               <Route path='/auth' component={AuthPage}/>
               <Route path='*' component={NotFoundPage}/>
             </Switch>
