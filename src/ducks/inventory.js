@@ -74,7 +74,7 @@ export const getRatesSaga = function* () {
     } else {
       yield put({
         type: GET_RATES_SUCCESS,
-        payload: {response}
+        payload: {...response}
       });
     }
   }

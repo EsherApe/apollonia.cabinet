@@ -89,7 +89,7 @@ export const signInSaga = function* () {
     } else {
       yield put({
         type: SIGN_IN_SUCCESS,
-        payload: {response}
+        payload: {...response}
       });
       yield put(push('/purchase'));
     }

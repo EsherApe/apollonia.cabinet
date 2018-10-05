@@ -112,7 +112,7 @@ export const getHistorySaga = function* () {
     } else {
       yield put({
         type: GET_HISTORY_SUCCESS,
-        payload: {response}
+        payload: {...response}
       });
     }
   }
