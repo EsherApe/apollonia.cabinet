@@ -25,18 +25,18 @@ export const ReducerRecord = Record({
   generatedAddress: '',
   history: new OrderedMap({}),
   error: null,
-  loading: false
+  loading: false,
+  buyStatus: null
 });
 
 export const TransactionRecord = Record({
   id: null,
-  amount: null,
   created: null,
-  currency: null,
-  currencyAmount: null,
-  nativeAmount: null,
   status: null,
-  wallet: null
+  exchangeRatio: null,
+  walletType: null,
+  wallet: null,
+  walletAmount: null
 });
 
 export default function reducer(state = new ReducerRecord(), action) {
@@ -54,7 +54,8 @@ export default function reducer(state = new ReducerRecord(), action) {
         .set('error', null);
     case BUY_COIN_SUCCESS:
       return state
-        .set('loading', false);
+        .set('loading', false)
+        .set('buyStatus', payload);
     case GENERATE_ADDRESS_SUCCESS:
       return state
         .set('generatedAddress', payload);
@@ -130,7 +131,8 @@ export const buyCoinSaga = function* () {
       })
     } else {
       yield put({
-        type: BUY_COIN_SUCCESS
+        type: BUY_COIN_SUCCESS,
+        payload: {...response}
       })
     }
   }

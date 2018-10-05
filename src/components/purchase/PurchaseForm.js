@@ -1,15 +1,20 @@
 import React, {Component} from 'react';
-import {FormGroup, Input, Form, Row, Col} from 'reactstrap';
+import {FormGroup, Form, Row, Col} from 'reactstrap';
 import {reduxForm, Field} from 'redux-form';
 import CurrencyList from "./CurrencyList";
 import WalletAddress from "./WalletAddress";
 import Amount from "./Amount";
 import ConfirmPurchase from "./ConfirmPurchase";
-import ErrorField from '../common/ErrorField';
 
 class PurchaseForm extends Component {
+  componentDidMount() {
+    let rates = this.props.getRates();
+
+    console.log(rates);
+  }
+
   render() {
-    const {handleSubmit, address} = this.props;
+    const {handleSubmit, address, status} = this.props;
     return (
       <div className='purchase__form w-100'>
         <Form onSubmit={handleSubmit}>
@@ -25,12 +30,12 @@ class PurchaseForm extends Component {
                 <WalletAddress/>
               </div>
               <div className="purchase__row">
-                <ConfirmPurchase/>
+                <ConfirmPurchase address={address}/>
               </div>
               <div className="purchase__row">
                 <h5 className="font-weight-bold">Status</h5>
                 <FormGroup>
-                  <Field name='purchaseStatus' type='text' component={ErrorField}/>
+                  <Field name='purchaseStatus' type='text' component='input' className='form-control' value={status} disabled/>
                 </FormGroup>
                 Average transaction process may take 15 minutes and above. For any support and questions, contact with us.
               </div>

@@ -66,6 +66,8 @@ export const getRatesSaga = function* () {
 
     let response = yield call(getData, `${apiEndpoint}/services/inventory/exchange/rates`);
 
+    console.log(response);
+
     if(response.error) {
       yield put({
         type: GET_RATES_ERROR,

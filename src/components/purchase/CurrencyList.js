@@ -30,32 +30,6 @@ class CurrencyList extends Component {
           </li>
           <li className='currency__list-item'>
             <label>
-              <Field name='currency' type="radio" value='ALT/BTC' component='input' className='currency__input'
-                     onClick={this.handleInputClick('BITCOINALT')}/>
-              <div className='currency__item d-flex align-items-center justify-content-start'>
-                <img src={checkedIconActive} alt="" className='currency__icon-checked'/>
-                <div className="currency__item-box d-flex align-items-center justify-content-start">
-                  <i className="currency__icon bitcoin-alt"> </i>
-                  <span>Bitcoin cash</span>
-                </div>
-              </div>
-            </label>
-          </li>
-          <li className='currency__list-item'>
-            <label>
-              <Field name='currency' type="radio" value='EOS' component='input' className='currency__input'
-                     onClick={this.handleInputClick('EOS')}/>
-              <div className='currency__item d-flex align-items-center justify-content-start'>
-                <img src={checkedIconActive} alt="" className='currency__icon-checked'/>
-                <div className="currency__item-box d-flex align-items-center justify-content-start">
-                  <i className="currency__icon eos"> </i>
-                  <span>EOS</span>
-                </div>
-              </div>
-            </label>
-          </li>
-          <li className='currency__list-item'>
-            <label>
               <Field name='currency' type="radio" value='ETH' component='input' className='currency__input'
                      onClick={this.handleInputClick('ETHEREUM')}/>
               <div className='currency__item d-flex align-items-center justify-content-start'>
@@ -67,19 +41,45 @@ class CurrencyList extends Component {
               </div>
             </label>
           </li>
-          <li className='currency__list-item'>
-            <label>
-              <Field name='currency' type="radio" value='LTC' component='input' className='currency__input'
-                     onClick={this.handleInputClick('LITECOIN')}/>
-              <div className='currency__item d-flex align-items-center justify-content-start'>
-                <img src={checkedIconActive} alt="" className='currency__icon-checked'/>
-                <div className="currency__item-box d-flex align-items-center justify-content-start">
-                  <i className="currency__icon litecoin"> </i>
-                  <span>Lite coin</span>
-                </div>
-              </div>
-            </label>
-          </li>
+          {/*<li className='currency__list-item'>*/}
+            {/*<label>*/}
+              {/*<Field name='currency' type="radio" value='ALT/BTC' component='input' className='currency__input'*/}
+                     {/*onClick={this.handleInputClick('BITCOINALT')}/>*/}
+              {/*<div className='currency__item d-flex align-items-center justify-content-start'>*/}
+                {/*<img src={checkedIconActive} alt="" className='currency__icon-checked'/>*/}
+                {/*<div className="currency__item-box d-flex align-items-center justify-content-start">*/}
+                  {/*<i className="currency__icon bitcoin-alt"> </i>*/}
+                  {/*<span>Bitcoin cash</span>*/}
+                {/*</div>*/}
+              {/*</div>*/}
+            {/*</label>*/}
+          {/*</li>*/}
+          {/*<li className='currency__list-item'>*/}
+            {/*<label>*/}
+              {/*<Field name='currency' type="radio" value='EOS' component='input' className='currency__input'*/}
+                     {/*onClick={this.handleInputClick('EOS')}/>*/}
+              {/*<div className='currency__item d-flex align-items-center justify-content-start'>*/}
+                {/*<img src={checkedIconActive} alt="" className='currency__icon-checked'/>*/}
+                {/*<div className="currency__item-box d-flex align-items-center justify-content-start">*/}
+                  {/*<i className="currency__icon eos"> </i>*/}
+                  {/*<span>EOS</span>*/}
+                {/*</div>*/}
+              {/*</div>*/}
+            {/*</label>*/}
+          {/*</li>*/}
+          {/*<li className='currency__list-item'>*/}
+            {/*<label>*/}
+              {/*<Field name='currency' type="radio" value='LTC' component='input' className='currency__input'*/}
+                     {/*onClick={this.handleInputClick('LITECOIN')}/>*/}
+              {/*<div className='currency__item d-flex align-items-center justify-content-start'>*/}
+                {/*<img src={checkedIconActive} alt="" className='currency__icon-checked'/>*/}
+                {/*<div className="currency__item-box d-flex align-items-center justify-content-start">*/}
+                  {/*<i className="currency__icon litecoin"> </i>*/}
+                  {/*<span>Lite coin</span>*/}
+                {/*</div>*/}
+              {/*</div>*/}
+            {/*</label>*/}
+          {/*</li>*/}
         </ul>
         <NavLink to="/transactions" className='currency__btn btn btn-primary'>List of transactions</NavLink>
       </div>

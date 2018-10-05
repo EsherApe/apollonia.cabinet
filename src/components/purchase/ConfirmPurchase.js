@@ -9,7 +9,7 @@ class ConfirmPurchase extends Component {
       <div className='confirm-purchase__input-box'>
         <h5 className="font-weight-bold">Wallet for transaction</h5>
         <FormGroup>
-          <Field name='generatedAddress' type='text' component={ErrorField}/>
+          <Field name='generatedAddress' type='text' value={this.props.address} component='input' className='form-control' disabled/>
         </FormGroup>
       </div>
     );

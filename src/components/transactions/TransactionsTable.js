@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {moduleName, getHistory, transactionsListSelector} from '../../ducks/user';
 import Loader from '../common/Loader';
 import { ToastContainer, toast } from 'react-toastify';
+import moment from 'moment';
 
 class TransactionsTable extends Component {
   componentDidMount() {
@@ -50,10 +51,10 @@ class TransactionsTable extends Component {
 
   getRow = (transaction) => {
     return <tr key={transaction.id}>
-      <td>{transaction.created}</td>
-      <td>{transaction.currencyAmount} {transaction.currency}</td>
-      <td> </td>
-      <td>{transaction.amount} APO</td>
+      <td>{moment(transaction.created).format('lll')}</td>
+      <td>{transaction.wallet} {transaction.walletType}</td>
+      <td>{transaction.exchangeRatio}</td>
+      <td>{transaction.walletAmount} APO</td>
       <td>{transaction.status}</td>
     </tr>
   }

@@ -5,15 +5,17 @@ import './purchase.scss';
 import signInBg from '../../../img/purchase__bg.png';
 import {connect} from "react-redux";
 import {moduleName, buyCoin} from "../../../ducks/user";
+import { getRates } from "../../../ducks/inventory";
 
 class Purchase extends Component {
   render() {
+    let {generatedAddress, status} = this.props;
     return (
       <div className='purchase'>
         <img src={signInBg} alt="" className='purchase__bg'/>
         <Container>
           <h2 className='purchase__title'>Buy APOLLO</h2>
-          <PurchaseForm onSubmit={this.handlePurchaseForm} address={this.props.generatedAddress}/>
+          <PurchaseForm onSubmit={this.handlePurchaseForm} address={generatedAddress} status={status} getRates={getRates}/>
         </Container>
       </div>
     );
@@ -28,4 +30,5 @@ export default connect(state => ({
   loading: state[moduleName].loading,
   error: state[moduleName].error,
   generatedAddress: state[moduleName].generatedAddress,
-}), {buyCoin})(Purchase);
+  status: state[moduleName].status
+}), {buyCoin, getRates})(Purchase);
