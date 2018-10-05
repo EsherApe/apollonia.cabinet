@@ -16,7 +16,7 @@ class CurrencyList extends Component {
         <ul className='list-unstyled'>
           <li className='currency__list-item'>
             <label>
-              <Field name='currency' type="radio" value='BTC' component='input' className='currency__input'
+              <Field name='currency' type="radio" value='BITCOIN' component='input' className='currency__input'
                      onClick={this.handleInputClick('BITCOIN')}/>
               <div className='currency__item d-flex align-items-center justify-content-start'>
                 <img src={checkedIconActive} alt="" className='currency__icon-checked currency__icon-checked--active'/>
@@ -30,7 +30,7 @@ class CurrencyList extends Component {
           </li>
           <li className='currency__list-item'>
             <label>
-              <Field name='currency' type="radio" value='ETH' component='input' className='currency__input'
+              <Field name='currency' type="radio" value='ETHEREUM' component='input' className='currency__input'
                      onClick={this.handleInputClick('ETHEREUM')}/>
               <div className='currency__item d-flex align-items-center justify-content-start'>
                 <img src={checkedIconActive} alt="" className='currency__icon-checked'/>

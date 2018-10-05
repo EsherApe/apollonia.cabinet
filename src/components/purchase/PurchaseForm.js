@@ -7,14 +7,8 @@ import Amount from "./Amount";
 import ConfirmPurchase from "./ConfirmPurchase";
 
 class PurchaseForm extends Component {
-  componentDidMount() {
-    let rates = this.props.getRates();
-
-    console.log(rates);
-  }
-
   render() {
-    const {handleSubmit, address, status} = this.props;
+    const {handleSubmit, address, status, rates, buyCoinForm} = this.props;
     return (
       <div className='purchase__form w-100'>
         <Form onSubmit={handleSubmit}>
@@ -24,7 +18,7 @@ class PurchaseForm extends Component {
             </Col>
             <Col xs='12' md='7' lg={{size: 7, offset: 1}} className='purchase__form--right'>
               <div className="purchase__row">
-                <Amount/>
+                <Amount buyCoinForm={buyCoinForm} rates={rates}/>
               </div>
               <div className="purchase__row">
                 <WalletAddress/>

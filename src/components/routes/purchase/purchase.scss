@@ -95,6 +95,9 @@
       color: #fff;
       padding: 0;
       line-height: 1;
+      &:disabled {
+        background-color: transparent;
+      }
       &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
         color: #fff;
         opacity: 1; /* Firefox */

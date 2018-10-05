@@ -19,17 +19,6 @@ export const ReducerRecord = Record({
   loading: false
 });
 
-export const TransactionRecord = Record({
-  id: null,
-  amount: null,
-  created: null,
-  currency: null,
-  currencyAmount: null,
-  nativeAmount: null,
-  status: null,
-  wallet: null
-});
-
 export default function reducer(state = new ReducerRecord(), action) {
   const {type, payload, error} = action;
 
@@ -39,7 +28,7 @@ export default function reducer(state = new ReducerRecord(), action) {
     case GET_RATES_SUCCESS:
       return state
         .set('loading', false)
-        .set('rates', dataToEntities(payload, TransactionRecord))
+        .set('rates', payload)
         .set('error', null);
     case GET_RATES_ERROR:
       return state
@@ -65,8 +54,6 @@ export const getRatesSaga = function* () {
     yield take(GET_RATES_REQUEST);
 
     let response = yield call(getData, `${apiEndpoint}/services/inventory/exchange/rates`);
-
-    console.log(response);
 
     if(response.error) {
       yield put({
