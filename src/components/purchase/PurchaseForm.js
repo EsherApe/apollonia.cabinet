@@ -20,19 +20,20 @@ class PurchaseForm extends Component {
               <div className="purchase__row">
                 <Amount buyCoinForm={buyCoinForm} rates={rates}/>
               </div>
-              <div className="purchase__row">
-                <WalletAddress/>
-              </div>
+              {/*<div className="purchase__row">*/}
+                {/*<WalletAddress/>*/}
+              {/*</div>*/}
               <div className="purchase__row">
                 <ConfirmPurchase address={address}/>
-              </div>
-              <div className="purchase__row">
-                <h5 className="font-weight-bold">Status</h5>
-                <FormGroup>
-                  <Field name='purchaseStatus' type='text' component='input' className='form-control' value={status} disabled/>
-                </FormGroup>
                 Average transaction process may take 15 minutes and above. For any support and questions, contact with us.
               </div>
+              {/*<div className="purchase__row">*/}
+                {/*<h5 className="font-weight-bold">Status</h5>*/}
+                {/*<FormGroup>*/}
+                  {/*<Field name='purchaseStatus' type='text' component='input' className='form-control' value={status} disabled/>*/}
+                {/*</FormGroup>*/}
+                {/*Average transaction process may take 15 minutes and above. For any support and questions, contact with us.*/}
+              {/*</div>*/}
             </Col>
           </Row>
         </Form>
@@ -50,10 +51,6 @@ const validate = ({currency, currencyAmount, wallet, generatedAddress}) => {
 
   if (!currencyAmount) {
     errors.currencyAmount = 'set currency amount!';
-  }
-
-  if (!wallet) {
-    errors.wallet = 'enter your wallet address!'
   }
 
   return errors;

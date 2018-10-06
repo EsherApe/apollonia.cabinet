@@ -10,7 +10,7 @@ const Amount = (props) => {
 
   let calcApoCoins = (e) => {
     let currencyAmount = e.target.value;
-    this.apoCoins = ((rates[currency] * currencyAmount) / 0.03).toFixed(2);
+    this.apoCoins = (rates[currency] * currencyAmount).toFixed(2);
   };
 
   return (
@@ -26,7 +26,7 @@ const Amount = (props) => {
       </div>
       <div>
         <div className='amount__output-box d-flex justify-content-center align-items-start'>
-          <small>APOLLO</small> <span>{this.apoCoins}</span>
+          <small>APOLLO&nbsp;</small> <span>{this.apoCoins}</span>
         </div>
       </div>
     </div>
