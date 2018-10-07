@@ -7,6 +7,24 @@ import Amount from "./Amount";
 import ConfirmPurchase from "./ConfirmPurchase";
 
 class PurchaseForm extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      totalApoCoins: 0,
+      currencyAmount: 0
+    }
+  }
+
+  calcTotalApoCoins = (totalApoCoins, currencyAmount) => {
+    this.setState(() => {
+      return {
+        totalApoCoins: totalApoCoins,
+        currencyAmount: currencyAmount
+      }
+    })
+  };
+
   render() {
     const {handleSubmit, address, status, rates, buyCoinForm} = this.props;
     return (
@@ -14,11 +32,11 @@ class PurchaseForm extends Component {
         <Form onSubmit={handleSubmit}>
           <Row className='purchase__form-row'>
             <Col xs='12' md='5' lg='4' className='purchase__form--left'>
-              <CurrencyList/>
+              <CurrencyList buyCoinForm={buyCoinForm} rates={rates} calcTotalApoCoins={this.calcTotalApoCoins}/>
             </Col>
             <Col xs='12' md='7' lg={{size: 7, offset: 1}} className='purchase__form--right'>
               <div className="purchase__row">
-                <Amount buyCoinForm={buyCoinForm} rates={rates}/>
+                <Amount buyCoinForm={buyCoinForm} rates={rates} totalApoCoins={this.state.totalApoCoins} calcTotalApoCoins={this.calcTotalApoCoins}/>
               </div>
               {/*<div className="purchase__row">*/}
                 {/*<WalletAddress/>*/}

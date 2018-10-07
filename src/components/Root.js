@@ -13,9 +13,7 @@ class Root extends Component {
   componentWillMount() {
     if(sessionStorage.getItem('userConfig')) {
       let userConfig = JSON.parse(sessionStorage.getItem('userConfig'));
-      console.log(userConfig);
       this.props.signInFromStorage(userConfig);
-      console.log('update page');
     }
   }
   render() {
@@ -32,7 +30,6 @@ class Root extends Component {
             </Switch>
           </div>
         </main>
-        {/*<Footer/>*/}
       </div>
     )
   }
