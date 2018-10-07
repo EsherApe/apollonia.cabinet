@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import {Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {moduleName} from '../../ducks/auth';
-import UnAuthorized from './UnAuthorized';
+import AuthPage from '../routes/auth/AuthPage';
 
 class ProtectedRoute extends Component {
   render() {
@@ -16,7 +16,7 @@ class ProtectedRoute extends Component {
 
   renderProtected = (routeProps) => {
     const {component: ProtectedComponent, authorized} = this.props;
-    return authorized ? <ProtectedComponent {...routeProps}/> : <UnAuthorized/>;
+    return authorized ? <ProtectedComponent {...routeProps}/> : <AuthPage/>;
   }
 }
 

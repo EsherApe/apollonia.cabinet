@@ -6,7 +6,8 @@ import TransactionsPage from "./routes/transactions/TransactionsPage";
 import NotFoundPage from "./routes/notFound/NotFoundPage";
 import ProtectedRoute from './common/ProtectedRoute';
 import { Route, Switch, withRouter } from 'react-router-dom';
-import {signInFromStorage} from '../ducks/auth';
+import {moduleName, signIn, signInFromStorage} from '../ducks/auth';
+import SignInForm from './auth/SignInForm';
 import {connect} from 'react-redux';
 
 class Root extends Component {
@@ -26,6 +27,7 @@ class Root extends Component {
               <ProtectedRoute exact path='/purchase' component={PurchasePage}/>
               <ProtectedRoute exact path='/transactions' component={TransactionsPage}/>
               <Route path='/auth' component={AuthPage}/>
+              <Route exact path='/' render={() => this.props.authorized ? <PurchasePage/> : <SignInForm onSubmit={this.handleSignIn}/>}/>
               <Route path='*' component={NotFoundPage}/>
             </Switch>
           </div>
@@ -33,6 +35,9 @@ class Root extends Component {
       </div>
     )
   }
+  handleSignIn = ({email, password}) => this.props.signIn(email, password);
 }
 
-export default withRouter(connect(null, {signInFromStorage})(Root));
+export default withRouter(connect(state => ({
+  authorized: !!state[moduleName].user.token
+}), {signIn, signInFromStorage})(Root));

@@ -24,7 +24,7 @@ class HeaderNavAuthorized extends Component {
           <NavItem>
             <div className='d-flex align-items-center justify-content-center'>
               <div className='header__user-greeting'>
-                <a href='' className='font-weight-bold' onClick={this.props.signOut}>LOGOUT</a>
+                <span className='header__logout-btn font-weight-bold' onClick={this.props.signOut}>LOGOUT</span>
               </div>
             </div>
           </NavItem>
