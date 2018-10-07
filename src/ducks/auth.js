@@ -68,6 +68,13 @@ export function signIn(login, password) {
   }
 }
 
+export function signInFromStorage(userConfig) {
+  return {
+    type: SIGN_IN_SUCCESS,
+    payload: {...userConfig}
+  }
+}
+
 export function signOut() {
   return {
     type: SIGN_OUT_REQUEST
@@ -92,6 +99,7 @@ export const signInSaga = function* () {
         payload: {...response}
       });
       yield put(push('/purchase'));
+      sessionStorage.setItem('userConfig', JSON.stringify(response));
     }
   }
 };
@@ -122,6 +130,7 @@ export const signOutSaga = function* () {
     yield put({
       type: SIGN_OUT_SUCCESS
     });
+    sessionStorage.clear();
     yield put(push('/auth/signIn'));
   } catch (_) {
 

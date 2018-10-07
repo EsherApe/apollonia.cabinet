@@ -29,7 +29,7 @@ class Balance extends Component {
 
   calcTokensSum = () => {
     let tokensArr = this.props.history.map((transaction) => {
-      return transaction.walletAmount
+      return transaction.amount
     });
 
     return tokensArr.reduce((sum, current) => {
