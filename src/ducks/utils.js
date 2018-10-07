@@ -9,7 +9,7 @@ export function dataToEntities(data, RecordModel = Map) {
 export function postData(url, payload) {
   const data = {};
   const payloadKeys = Object.keys(payload);
-  payloadKeys.map((item) => {
+  payloadKeys.map(item => {
     data[item] = payload[item];
   });
 

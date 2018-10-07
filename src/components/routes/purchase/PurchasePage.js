@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Container, Row, Col} from 'reactstrap';
+import {Container} from 'reactstrap';
 import PurchaseForm from "../../purchase/PurchaseForm";
 import './purchase.scss';
 import signInBg from '../../../img/purchase__bg.png';
@@ -25,8 +25,8 @@ class Purchase extends Component {
     );
   }
 
-  handlePurchaseForm = (currency, currencyAmount, wallet, generatedAddress) => {
-    return this.props.buyCoin(currency, currencyAmount, wallet, generatedAddress)
+  handlePurchaseForm = (currency, currencyAmount, generatedAddress) => {
+    this.props.buyCoin(currency, currencyAmount, generatedAddress)
   }
 }
 

@@ -1,7 +1,5 @@
 import React from 'react';
-import {Col} from 'reactstrap';
-import {Field, formValueSelector} from 'redux-form';
-import ErrorField from '../common/ErrorField';
+import {Field} from 'redux-form';
 
 const Amount = (props) => {
   let {rates, buyCoinForm, totalApoCoins, calcTotalApoCoins} = props;

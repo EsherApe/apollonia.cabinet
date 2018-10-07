@@ -3,11 +3,9 @@ import {routerReducer as router} from 'react-router-redux';
 import {reducer as form} from 'redux-form';
 import authReducer, {moduleName as authModule} from '../ducks/auth';
 import userReducer, {moduleName as userModule} from '../ducks/user';
-import inventoryReducer, {moduleName as inventoryModule} from '../ducks/inventory';
 
 export default combineReducers({
   router, form,
   [authModule]: authReducer,
-  [userModule]: userReducer,
-  [inventoryModule]: inventoryReducer
+  [userModule]: userReducer
 });

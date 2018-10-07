@@ -3,12 +3,10 @@ import { Col } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import '../routes/transactions/transactions.scss';
 import { connect } from "react-redux";
-import { getHistory, moduleName, transactionsListSelector } from "../../ducks/user";
-import moment from "moment/moment";
+import { transactionsListSelector } from "../../ducks/user";
 
 class Balance extends Component {
   render() {
-    const {history} = this.props;
     return (
       <Col xs='12' lg='4'>
         <div className='balance'>
@@ -29,6 +27,9 @@ class Balance extends Component {
 
   calcTokensSum = () => {
     let tokensArr = this.props.history.map((transaction) => {
+      if(transaction.amount == false) {
+        return 0
+      }
       return transaction.amount
     });
 

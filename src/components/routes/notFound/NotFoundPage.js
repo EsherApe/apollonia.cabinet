@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
 
 class NotFound extends Component {
   render() {

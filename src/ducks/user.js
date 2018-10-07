@@ -30,7 +30,7 @@ export const GENERATE_ADDRESS_ERROR = `${prefix}/GENERATE_ADDRESS_ERROR`;
 
 //Reducer
 export const ReducerRecord = Record({
-  generatedAddress: null,
+  generatedAddress: '',
   rates: new OrderedMap({}),
   history: new OrderedMap({}),
   walletTypes: new OrderedMap({}),
@@ -120,10 +120,11 @@ export function getHistory() {
   }
 }
 
-export function buyCoin(currency, currencyAmount, wallet, generatedAddress) {
+export function buyCoin(currency, currencyAmount, generatedAddress) {
+  console.log(currency, currencyAmount, generatedAddress);
   return {
     type: BUY_COIN_REQUEST,
-    payload: {currency, currencyAmount, wallet, generatedAddress}
+    payload: {currency, currencyAmount, generatedAddress}
   }
 }
 

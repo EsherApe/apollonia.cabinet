@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
-import { Col } from 'reactstrap';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import checkedIconActive from '../../img/currencies/done.svg';
-import checkedIcon from '../../img/currencies/nodone.svg';
 import { generateAddress } from '../../ducks/user';
 
 class CurrencyList extends Component {
@@ -54,8 +51,6 @@ class CurrencyList extends Component {
     let currencyAmount = buyCoinForm && buyCoinForm.values ? buyCoinForm.values.currencyAmount : '';
 
     if(buyCoinForm && buyCoinForm.values) {
-      console.log(rates[walletType]);
-      console.log(currencyAmount);
       let apoCoins = 0;
 
       if(currencyAmount) {

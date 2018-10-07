@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import {FormGroup, Form, Row, Col} from 'reactstrap';
-import {reduxForm, Field} from 'redux-form';
+import {Form, Row, Col} from 'reactstrap';
+import {reduxForm} from 'redux-form';
 import CurrencyList from "./CurrencyList";
-import WalletAddress from "./WalletAddress";
 import Amount from "./Amount";
 import ConfirmPurchase from "./ConfirmPurchase";
 
@@ -24,7 +23,7 @@ class PurchaseForm extends Component {
   };
 
   render() {
-    const {handleSubmit, address, status, rates, buyCoinForm} = this.props;
+    const {handleSubmit, address, rates, buyCoinForm} = this.props;
     return (
       <div className='purchase__form w-100'>
         <Form onSubmit={handleSubmit}>
@@ -59,7 +58,7 @@ class PurchaseForm extends Component {
   }
 }
 
-const validate = ({currency, currencyAmount, wallet, generatedAddress}) => {
+const validate = ({currency, currencyAmount}) => {
   const errors = {};
 
   if (!currency) {

@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Nav, NavItem } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
 
 const HeaderNavNotAuthorized = (props) => {
   return (

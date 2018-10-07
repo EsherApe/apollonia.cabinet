@@ -1,8 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
 import { Nav, NavItem } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
-import userImg from '../../img/bkg.svg';
 import {connect} from 'react-redux';
 import {moduleName} from '../../ducks/auth';
 

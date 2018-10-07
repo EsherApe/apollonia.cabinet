@@ -44,7 +44,7 @@ class SignInForm extends Component {
             </Col>
             <Col xs='12' md='6' lg='8'>
               <a href="http://apollonia.online/" className='sign-in__link'>
-                <img src={signInBg} className='img-fluid'/>
+                <img src={signInBg} className='img-fluid' alt=''/>
               </a>
             </Col>
           </Row>
