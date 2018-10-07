@@ -56,7 +56,12 @@ class CurrencyList extends Component {
     if(buyCoinForm && buyCoinForm.values) {
       console.log(rates[walletType]);
       console.log(currencyAmount);
-      let apoCoins = ((rates[walletType] * currencyAmount) / 0.03).toFixed(2);
+      let apoCoins = 0;
+
+      if(currencyAmount) {
+        apoCoins = ((rates[walletType] * currencyAmount) / 0.03).toFixed(2)
+      }
+
       calcTotalApoCoins(apoCoins);
     }
   }

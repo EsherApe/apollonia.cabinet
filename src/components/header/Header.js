@@ -42,7 +42,7 @@ class Header extends Component {
       <header className='header'>
         <Container>
           <Navbar light expand="md" className='header__navbar'>
-            <NavbarBrand tag={Link} to="/" className='header__logo font-weight-bold'>Apollonia</NavbarBrand>
+            <NavbarBrand tag={Link} to="/purchase" className='header__logo font-weight-bold'>Apollonia</NavbarBrand>
             <NavbarToggler onClick={this.toggle}/>
             <Collapse isOpen={this.state.isOpen} navbar>
               {headerNav()}

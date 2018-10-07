@@ -11,16 +11,14 @@ class PurchaseForm extends Component {
     super(props);
 
     this.state = {
-      totalApoCoins: 0,
-      currencyAmount: 0
+      totalApoCoins: 0
     }
   }
 
-  calcTotalApoCoins = (totalApoCoins, currencyAmount) => {
+  calcTotalApoCoins = (totalApoCoins) => {
     this.setState(() => {
       return {
-        totalApoCoins: totalApoCoins,
-        currencyAmount: currencyAmount
+        totalApoCoins: totalApoCoins
       }
     })
   };

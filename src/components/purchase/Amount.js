@@ -11,7 +11,7 @@ const Amount = (props) => {
   let calcApoCoins = (e) => {
     let currencyAmount = e.target.value;
     let apoCoins = ((rates[currency] * currencyAmount) / 0.03).toFixed(2);
-    calcTotalApoCoins(apoCoins, currencyAmount);
+    calcTotalApoCoins(apoCoins);
   };
 
   return (
