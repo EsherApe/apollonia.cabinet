@@ -27,6 +27,7 @@ class PurchaseForm extends Component {
                 <ConfirmPurchase address={address}/>
                 Average transaction process may take 15 minutes and above. For any support and questions, contact with us.
               </div>
+              <button type='submit' className='btn btn-primary'>Submit</button>
               {/*<div className="purchase__row">*/}
                 {/*<h5 className="font-weight-bold">Status</h5>*/}
                 {/*<FormGroup>*/}

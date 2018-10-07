@@ -30,7 +30,7 @@ export const GENERATE_ADDRESS_ERROR = `${prefix}/GENERATE_ADDRESS_ERROR`;
 
 //Reducer
 export const ReducerRecord = Record({
-  generatedAddress: '',
+  generatedAddress: null,
   rates: new OrderedMap({}),
   history: new OrderedMap({}),
   walletTypes: new OrderedMap({}),
@@ -181,15 +181,16 @@ export const getHistorySaga = function* () {
 
     let response = yield call(getData, `${apiEndpoint}/services/user/transaction/history`);
 
-    if(response.error) {
+    if(!response.error) {
       yield put({
         type: GET_HISTORY_ERROR,
         error: {...response}
       });
     } else {
+      let resp = [{created:"2018-10-05T11:47:22.405",status:"CREATED",walletType:"ETHEREUM",exchangeRatio:0.00450005},{created:"2018-10-05T11:44:47.562",status:"CREATED",walletType:"BITCOIN",exchangeRatio:1.53E-4}];
       yield put({
         type: GET_HISTORY_SUCCESS,
-        payload: {...response}
+        payload: {...resp}
       });
     }
   }
@@ -229,7 +230,7 @@ export const generateAddressSaga = function* () {
     } else {
       yield put({
         type: GENERATE_ADDRESS_SUCCESS,
-        payload: {...response}
+        payload: response
       })
     }
   }

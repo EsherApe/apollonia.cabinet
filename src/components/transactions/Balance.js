@@ -15,7 +15,8 @@ class Balance extends Component {
           <h5 className='balance__title mb-5'>Balance</h5>
           <div className='balance__number-box'>
             <div className='balance__number d-flex align-items-start text-primary mb-5'>
-              <span>APOLLO</span> <span>{this.calcTokensSum()}</span>
+              <span className='balance__number-text'>APOLLO</span>
+              <span className='balance__number-value'>{this.calcTokensSum()}</span>
             </div>
             <div className='balance__course text-secondary mb-5'>1 APO = <span>0.03</span>$</div>
           </div>
@@ -28,7 +29,7 @@ class Balance extends Component {
 
   calcTokensSum = () => {
     let tokensArr = this.props.history.map((transaction) => {
-      return transaction.amount
+      return transaction.walletAmount
     });
 
     return tokensArr.reduce((sum, current) => {

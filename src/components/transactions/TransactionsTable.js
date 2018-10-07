@@ -50,13 +50,30 @@ class TransactionsTable extends Component {
   }
 
   getRow = (transaction) => {
-    return <tr key={transaction.id}>
-      <td>{moment(transaction.created).format('lll')}</td>
-      <td>{transaction.wallet} {transaction.walletType}</td>
-      <td>{transaction.exchangeRatio}</td>
-      <td>{transaction.walletAmount} APO</td>
-      <td>{transaction.status}</td>
-    </tr>
+    return (
+      <tr key={transaction.id}>
+        <td colSpan={5}>
+          <table>
+            <tbody>
+            <tr>
+              <td>{moment(transaction.created).format('lll')}</td>
+              <td>{transaction.wallet} {transaction.walletType}</td>
+              <td>{transaction.exchangeRatio}</td>
+              <td>{transaction.walletAmount} APO</td>
+              <td>{transaction.status}</td>
+            </tr>
+            <tr className='transparent__tr'>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    )
   }
 }
 

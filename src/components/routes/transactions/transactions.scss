@@ -6,11 +6,13 @@
   }
   &__number {
     font-weight: 600;
-    font-size: 4rem;
     line-height: 1;
-    span {
+    &-text {
       font-size: 2rem;
       margin-top: 0.4rem;
+    }
+    &-value {
+      font-size: 4rem;
     }
   }
   &__btn {
@@ -27,13 +29,29 @@
     overflow: auto;
   }
   &__table {
+    table-layout: fixed;
     color: #fff;
     min-width: 420px;
-    th, td {
+
+    th {
       padding: 1.4rem;
     }
-    thead {
-      border-bottom: 2px solid #e3e3e3;
+    table {
+      table-layout: fixed;
+      width: 100%;
+      tbody {
+        td {
+          background-color: #fff;
+          color: #000;
+          padding: 1.4rem;
+        }
+      }
+      .transparent__tr {
+        td {
+          background-color: transparent;
+          padding: 0;
+        }
+      }
     }
   }
   &__contacts {
